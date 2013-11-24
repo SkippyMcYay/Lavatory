@@ -1,0 +1,35 @@
+AP system somewhat similar to FFT's CT, but AP is more of a resource
+-AP should be a universal resource that is of equal value to each character.
+	-However, some characters may do specific actions they excel at with a lower AP cost.
+-HUD must show turn order!
+-Forecast the player's position in turn order if they do a particular action
+
+-Ability to delay your turn to right after another character's
+	-If a character delays to after their ally, you cannot "butt in" between their turns
+	-This may encourage coordinated team attacks
+
+-Basics: Each character gains AP at the same rate. Their turn starts when they reach an AP amount
+	specified by their class. "Faster" classes would have a lower threshold. They get their
+	turns more often, but they have less AP to play with. However, they can delay their turn
+	to gain more AP. Every character will have an AP cap (variable size?), so if they delay
+	their turn too long they can exceed this cap and gain no additional AP for waiting.
+
+	Characters can use various amounts of AP to perform actions. Certain characters may have
+	a different range of AP usage that is somewhat connected to their "fastness". For instance,
+	a thief may only have a low AP weak attack, but a fighter could have that as well as a high
+	AP strong attack. Perhaps the fighter may only have a medium and heavy attack, since the
+	strength required for a sword swing is greater than that of a dagger.
+
+
+
+
+-Mages can spend their turn charging, maybe sink a variable amount of AP into it
+	-Any turn they can release any spell they've charged long enough for
+	-This allows them to use a spell as a reaction
+	-This could replace MP entirely
+
+Reactions!
+
+-Reaction reactions: huge AP cost
+-Limited by class? i.e. thieves dodge, fighters block, etc
+-

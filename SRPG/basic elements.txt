@@ -1,0 +1,24 @@
+characters
+==========
+damage/heal (HP or any resource)
+buff/debuff
+melee
+ranged
+AOE
+AP control?
+move self
+move others
+
+
+terrain
+=======
+damage/heal
+buff/debuff
+move characters
+destructible
+reduce movement
+block movement
+block attacks
+
+
+mix & match elements for random generation shenanigans?

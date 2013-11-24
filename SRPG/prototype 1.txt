@@ -1,0 +1,39 @@
+AP system
+=========
+While no character has enough AP for a turn, everyone gets +X AP
+When someone gets enough AP, their turn begins
+	-Multiple characters may get turns on the same "clocktick"
+
+Characters have multiple actions with different AP costs
+	-Strong and weak attack
+
+Character Parameters
+====================
+HP
+Attack
+Defense
+Attack Range
+AP needed for turn (need a name for this)
+Max AP (not really necessary until turn delaying is implemented)
+
+Combat
+======
+Attack + attack modifier(e.g. strong/weak) - defense
+
+Terrain
+=======
+None!
+
+Reactions
+=========
+Take a turn when you get targeted by someone else
+Player is prompted if they want to react
+During reaction turn AP costs are doubled, or alternatively have an initial reaction cost
+Your AP starts at your current amount when you react, not your [AP needed for turn] value
+After your reaction, your opponent's action completes
+	-If possible: make attacks track if the target remains in attack range
+
+Extra
+=====
+Moving other characters - maybe a shove option like Fire Emblem, also diff shove distances
+ with diff AP costs
