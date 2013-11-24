@@ -1,3 +1,5 @@
+Note: Items with a * have not been approved by James yet!
+
 AP system
 =========
 While no character has enough AP for a turn, everyone gets +X AP
@@ -13,8 +15,15 @@ HP
 Attack
 Defense
 Attack Range
+*Movement AP cost
 AP needed for turn (need a name for this)
 Max AP (not really necessary until turn delaying is implemented)
+
+*Classes
+=======
+Archer - range attack, medium move cost, med damage, high attack cost, mid-high AP for turn
+Fighter - melee attack, medium move cost, high damage, mid+high attack cost, mid AP for turn
+Thief - melee attack, low move cost, low damage, low attack cost, low-mid AP for turn
 
 Combat
 ======
