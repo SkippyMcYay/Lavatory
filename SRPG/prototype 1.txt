@@ -1,4 +1,5 @@
 Note: Items with a * have not been approved by James yet!
+Note: Items with a ~ have not been approved by Doug yet!
 
 AP system
 =========
@@ -11,23 +12,43 @@ Characters have multiple actions with different AP costs
 
 Character Parameters
 ====================
+~Max HP
 HP
 Attack
 Defense
 Attack Range
-*Movement AP cost
+Movement AP cost
 AP needed for turn (need a name for this)
+~Current AP
 Max AP (not really necessary until turn delaying is implemented)
 
-*Classes
+Classes
 =======
 Archer - range attack, medium move cost, med damage, high attack cost, mid-high AP for turn
 Fighter - melee attack, medium move cost, high damage, mid+high attack cost, mid AP for turn
 Thief - melee attack, low move cost, low damage, low attack cost, low-mid AP for turn
+~Class Abilities
+====================
+Block-all classes should be able to block, each character who attacks lowers                       blockers AP, raises def by 50% perhaps?
+Delay-no cost
 
+Archer 
+    standard attack-low cost, range of 1, low damage
+    ranged attack-high cost, mid damage, range either standardized or based on AP
+    special ability-precision shot: high cost, (see above for range),bonus to                                                armored?
+Fighter
+    standard attack-low cost, range of 1, mid damage
+    Strong attack-med cost,range of 1?,high damage
+    special ability-Haymaker: high cost, high damage, knocks target back
+Thief
+    standard attack-low cost, low damage, range 1
+    strong attack-med cost, low damage unless behind target, range 1
+    special ability-med cost, no damage, range 3, steals the ap of target entity and                             gives to ally?
+    
 Combat
 ======
-Attack + attack modifier(e.g. strong/weak) - defense
+~//Attack + attack modifier(e.g. strong/weak) - defense
+~Attack of ability - defense
 
 Terrain
 =======
@@ -41,6 +62,12 @@ During reaction turn AP costs are doubled, or alternatively have an initial reac
 Your AP starts at your current amount when you react, not your [AP needed for turn] value
 After your reaction, your opponent's action completes
 	-If possible: make attacks track if the target remains in attack range
+
+~Possible Class Based Reactions
+===========================
+Archer-light attack
+Fighter-block
+Thief-move
 
 Extra
 =====
