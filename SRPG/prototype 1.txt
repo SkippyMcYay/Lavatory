@@ -1,6 +1,6 @@
 Note: Items with a * have not been approved by James yet!
 Note: Items with a ~ have not been approved by Doug yet!
-
+Note: Items with a // have been put into code.
 AP system
 =========
 While no character has enough AP for a turn, everyone gets +X AP
@@ -12,15 +12,15 @@ Characters have multiple actions with different AP costs
 
 Character Parameters
 ====================
-Max HP
-HP
-Attack
-Defense
-Attack Range
+//Max HP
+//HP
+//Attack
+//Defense
+//Attack Range
 Movement AP cost
-AP needed for turn (need a name for this)
-Current AP
-Max AP (not really necessary until turn delaying is implemented)
+//AP needed for turn (need a name for this)
+//Current AP
+//Max AP (not really necessary until turn delaying is implemented)
 
 Classes
 =======
