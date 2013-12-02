@@ -1,6 +1,9 @@
 Note: Items with a * have not been approved by James yet!
 Note: Items with a ~ have not been approved by Doug yet!
 Note: Items with a // have been put into code.
+
+Note: The answer to any question regarding the prototype is "I don't care, it's a prototype"
+
 AP system
 =========
 While no character has enough AP for a turn, everyone gets +X AP
