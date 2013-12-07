@@ -34,6 +34,9 @@ Class Abilities
 ====================
 Block-all classes should be able to block, each character who attacks lowers blockers AP, 
   raises def by 50% perhaps?
+
+Possible ap-based shove
+
 Delay-no cost
 
 Archer 
@@ -57,7 +60,7 @@ Terrain
 =======
 None!
 
-Reactions
+~P-reactions
 =========
 Take a turn when you get targeted by someone else
 Player is prompted if they want to react
@@ -66,13 +69,8 @@ Your AP starts at your current amount when you react, not your [AP needed for tu
 After your reaction, your opponent's action completes
 	-If possible: make attacks track if the target remains in attack range
 
-Possible Class Based Reactions
+Possible Class Based P-reactions
 ===========================
 Archer-light attack
 Fighter-block
 Thief-move
-
-Extra
-=====
-Moving other characters - maybe a shove option like Fire Emblem, also diff shove distances
- with diff AP costs

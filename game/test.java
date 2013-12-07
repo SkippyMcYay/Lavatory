@@ -3,15 +3,20 @@ import entity.*;
 
 public class test{
     public static void main(String args[]){
-        character person=new character("james");
         board world=new board();
 
-        world.displayBoard();
+        int position[]={2,2};
+        character person=new character("james",position);
         world.addCharacter(person);
-        world.displayBoard();
 
-        character someone=new character("Indestructible James");
+        int position2[]={2,1};
+        character someone=new character("Indestructible James",position2);
+        world.addCharacter(someone);
 
-        world.removeCharacter(someone);
+        boolean turnout[][]=world.getMoveRange(position,2);
+
+        world.displayMoveRange(turnout);
+
+
     }
 }

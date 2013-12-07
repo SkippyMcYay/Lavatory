@@ -2,21 +2,57 @@ package entity;
 
 public class character {
 
-    private int max_hp=55,cur_hp,
-                max_mp,cur_mp,
-                attack,attack_range,
-                defense,
-                ap_for_turn,max_ap,cur_ap;
-    
-    public int getHp(){
+    private int max_hp;
+    private int cur_hp;
+    private int max_mp;
+    private int cur_mp;
+    private int attack;
+    private int attack_range;
+    private int defense;
+    private int ap_for_turn;
+    private int max_ap;
+    private int cur_ap;
+    private int position[];
+    public String name;
+
+//  constructor
+    public character(String name,int position[]){
+        this.setMaxHp(100);
+        this.setCurHp(this.getMaxHp());
+        this.setMaxMp(50);
+        this.setCurMp(this.getMaxMp());
+        this.setAttack(10);
+        this.setDefense(5);
+        this.setAttackRange(1);
+        this.setApForTurn(60);
+        this.setMaxAp(100);
+        this.setCurAp(this.getMaxAp());
+        this.setPos(position);
+        this.name=name;
+    }
+
+    public void displayStats(){
+        System.out.print("max hp:");System.out.println(this.getMaxHp());
+        System.out.print("cur hp:");System.out.println(this.getCurHp());
+        System.out.print("max mp:");System.out.println(this.getMaxMp());
+        System.out.print("cur mp:");System.out.println(this.getCurMp());
+        System.out.print("attack:");System.out.println(this.getAttack());
+        System.out.print("at rng:");System.out.println(this.getAttackRange());
+        System.out.print("dfense:");System.out.println(this.getDefense());
+        System.out.print("ap_4_t:");System.out.println(this.getApForTurn());
+        System.out.print("max ap:");System.out.println(this.getMaxAp());
+        System.out.print("cur ap:");System.out.println(this.getCurAp());
+        System.out.print("positn:");System.out.print(this.getPos()[0]);System.out.print(",");System.out.println(this.getPos()[1]);
+    }
+
+
+    public int getCurHp(){
         return this.cur_hp;
     }
-    public void setHp(int x){
+    public void setCurHp(int x){
         if(x>0){
-            if(x<this.max_hp){
+            if(x<=this.max_hp){
                 this.cur_hp=x;
-            }else{
-                this.cur_hp=this.max_hp;
             }
         }else{
             this.cur_hp=0;
@@ -32,15 +68,13 @@ public class character {
             this.max_hp=0;
         }
     }
-    public int getMp(){
+    public int getCurMp(){
         return this.cur_mp;
     }
-    public void setMp(int x){
+    public void setCurMp(int x){
         if(x>0){
-            if(x<this.max_mp){
+            if(x<=this.max_mp){
                 this.cur_mp=x;
-            }else{
-                this.cur_mp=this.max_mp;
             }
         }else{
             this.cur_mp=0;
@@ -90,6 +124,20 @@ public class character {
         return this.cur_ap;
     }
     public void setCurAp(int x){
-        this.cur_ap=x;
+        if (x>0){
+            if(x<=this.max_ap){
+                this.cur_ap=x;
+            }
+        }else{
+            this.cur_ap=0;
+        }
+
     }
+    public int[] getPos(){
+        return this.position;
+    }
+    public void setPos(int new_position[]){
+        //possible array linking error in the future
+        this.position=new_position;
+    }//  getters and setters
 }
