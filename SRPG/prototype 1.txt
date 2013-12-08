@@ -20,10 +20,11 @@ Character Parameters
 //Attack
 //Defense
 //Attack Range
-Movement AP cost
+//Movement AP cost
 //AP needed for turn (need a name for this)
 //Current AP
 //Max AP (not really necessary until turn delaying is implemented)
+*//Faction
 
 Classes
 =======
@@ -60,7 +61,7 @@ Terrain
 =======
 None!
 
-~P-reactions
+P-reactions
 =========
 Take a turn when you get targeted by someone else
 Player is prompted if they want to react

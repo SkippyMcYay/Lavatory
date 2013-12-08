@@ -1,7 +1,10 @@
 package entity;
 
+import java.awt.Point;
+
 public class character {
 
+    private String faction;
     private int max_hp;
     private int cur_hp;
     private int max_mp;
@@ -12,11 +15,12 @@ public class character {
     private int ap_for_turn;
     private int max_ap;
     private int cur_ap;
-    private int position[];
+    private int move_ap_cost;
+    private Point position;
     public String name;
 
 //  constructor
-    public character(String name,int position[]){
+    public character(String name,Point position){
         this.setMaxHp(100);
         this.setCurHp(this.getMaxHp());
         this.setMaxMp(50);
@@ -27,7 +31,9 @@ public class character {
         this.setApForTurn(60);
         this.setMaxAp(100);
         this.setCurAp(this.getMaxAp());
+        this.setMoveApCost(10);
         this.setPos(position);
+        this.setFaction("TestFaction");
         this.name=name;
     }
 
@@ -42,7 +48,9 @@ public class character {
         System.out.print("ap_4_t:");System.out.println(this.getApForTurn());
         System.out.print("max ap:");System.out.println(this.getMaxAp());
         System.out.print("cur ap:");System.out.println(this.getCurAp());
-        System.out.print("positn:");System.out.print(this.getPos()[0]);System.out.print(",");System.out.println(this.getPos()[1]);
+        System.out.print("mvcost:");System.out.println(this.getMoveApCost());
+        System.out.print("factn :");System.out.println(this.getFaction());
+        System.out.print("positn:");System.out.print(this.getPos().x);System.out.print(",");System.out.println(this.getPos().y);
     }
 
 
@@ -133,10 +141,22 @@ public class character {
         }
 
     }
-    public int[] getPos(){
+    public int getMoveApCost(){
+        return this.move_ap_cost;
+    }
+    public void setMoveApCost(int x){
+        this.move_ap_cost=x;
+    }
+    public String getFaction(){
+        return this.faction;
+    }
+    public void setFaction(String fact){
+        this.faction = fact;
+    }
+    public Point getPos(){
         return this.position;
     }
-    public void setPos(int new_position[]){
+    public void setPos(Point new_position){
         //possible array linking error in the future
         this.position=new_position;
     }//  getters and setters
