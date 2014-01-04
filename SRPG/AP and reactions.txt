@@ -32,4 +32,4 @@ Reactions!
 
 -Reaction reactions: huge AP cost
 -Limited by class? i.e. thieves dodge, fighters block, etc
--
+-Idea: reactions have a reduced/normal(non-reaction) cost if the targeted character has their AP for turn

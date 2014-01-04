@@ -25,7 +25,7 @@ public class board {
         System.out.println("------------------------------");
     }
 
-    public void addCharacter(character individual){
+    public void addCharacter(actor individual){
         for(int i=0;i<this.combatants.length;i++){
             if(this.combatants[i]==null){
                 this.combatants[i]=individual;
@@ -36,7 +36,7 @@ public class board {
         System.out.println("something went wrong adding "+individual.name+" to the world.");
     }
 
-    public void removeCharacter(character individual){
+    public void removeCharacter(actor individual){
         for(int i=0;i<this.combatants.length;i++){
             if(this.combatants[i]==individual){
                 this.combatants[i]=null;
@@ -48,7 +48,7 @@ public class board {
     }
 
     //Tentative. Need this so an external function can call getMoveRange
-    public character getCharacter(int index){
+    public actor getCharacter(int index){
         return combatants[index];
     }
 
@@ -56,7 +56,7 @@ public class board {
         terrain_map[x][y] = type;
     }
 
-    public int[][] getMoveRange(character person){
+    public int[][] getMoveRange(actor person){
         int[][] ap_remaining = new int[this.board_size_x][this.board_size_y];
         for (int i=0; i<this.board_size_x; i++){
             for (int j=0; j<this.board_size_y; j++){
@@ -120,7 +120,7 @@ public class board {
     private int board_size_y=new options().board_size_y;
     //private int number_of_combatants=((new options().number_of_combatants<=10) ? new options().number_of_combatants:10);
     private int number_of_combatants=new options().number_of_combatants;
-    private character[] combatants = new character[number_of_combatants];
+    private actor[] combatants = new actor[number_of_combatants];
     private int[][] combatant_map=new int[board_size_x][board_size_y];
     private int[][] terrain_map=new int[board_size_x][board_size_y];
 }

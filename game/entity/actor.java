@@ -2,7 +2,7 @@ package entity;
 
 import java.awt.Point;
 
-public class character {
+public class actor {
 
     private String faction;
     private int max_hp;
@@ -20,7 +20,7 @@ public class character {
     public String name;
 
 //  constructor
-    public character(String name,Point position){
+    public actor(String name, Point position){
         this.setMaxHp(100);
         this.setCurHp(this.getMaxHp());
         this.setMaxMp(50);

@@ -1,0 +1,3 @@
+Turn loop
+=========
+1. Pick actor with highest AP-APforTurn

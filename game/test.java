@@ -12,17 +12,17 @@ public class test{
 
 
         Point position = new Point(2,2);
-        character person=new character("james",position);
+        actor person=new actor("james",position);
         person.setFaction("Blueberry Destroyers");
         world.addCharacter(person);
 
         Point position2 = new Point(2,1);
-        character someone=new character("Indestructible James",position2);
+        actor someone=new actor("Indestructible James",position2);
         someone.setFaction("Inundefeatedable");
         world.addCharacter(someone);
 
         Point position3 = new Point(4,2);
-        character dude=new character("McDuggleton",position3);
+        actor dude=new actor("McDuggleton",position3);
         dude.setFaction("Blueberry Destroyers");
         world.addCharacter(dude);
 
