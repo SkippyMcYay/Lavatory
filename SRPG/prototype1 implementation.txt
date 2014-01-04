@@ -1,3 +1,77 @@
+Game loop
+=========
+1. While waitClockTicks = 0 && AP >= APForTurn  for at least one actor
+    a. Start turn loop for actor with highest AP - APForTurn (needs tiebreaker eventually)
+2. While waitClockTicks = -1 && AP >= APForTurn for at least one actor
+    a. Start turn loop for actor with highest AP - APForTurn
+3. Increase all living actors' AP by APGainPerTurn (same for everyone)
+4. Decrease WaitClockTicks by 1 for each actor with waitClockTicks >= 0
+
 Turn loop
 =========
-1. Pick actor with highest AP-APforTurn
+1. Display turn menu
+    a. If AP >= APForTurn && preactionTurn == false display Delay; otherwise display End Turn
+2. Wait for following selections
+    a. Act
+        1. Display action menu
+        2. Wait for following events
+            a. Action selected
+                1. Display target range
+                2. Wait for following events
+                    a. Valid space selected (contains an actor)
+                        1. Display damage/accuracy forecast against targeted actor
+                            a. Confirm to continue
+                            b. Cancel to return to 2a2a1
+                        2. Decrease actor's AP
+                        3. If action is offensive, prompt targeted actor for preaction
+                            a. If confirmed, start turn loop for targeted actor
+                        4. Resolve action if target actor still in range
+                    b. Invalid space selected
+                        1. Error message/sound, or do nothing
+                        2. Return to 2a2a1
+                    c. Cancel
+                        1. Return to 2a1
+            b. Cancel
+                1. Return to 1
+    b. Move
+        1. Display move range
+        2. Wait for following events
+            a. Valid Space selected
+                1. Move actor to space
+                2. Decrease actor's AP
+                3. Return to 1
+            b. Invalid space selected
+                1. Error message/sound, or do nothing
+                2. Return to 1b1
+            c. Cancel
+                1. Return to 1
+    c. Defend
+        1. Set actor to defending
+        2. Exit turn loop
+    d. Delay
+        1. Display turn order
+            a. If target actor's waitClockTicks == 0 || their AP >= APForTurn, they can't be selected
+            b. All others can be selected
+        2. Wait for following events
+            a. Actor selected
+                1. This actor's waitClockTicks = target's Ceiling((APForTurn - AP)/APGainPerTurn)
+                2. Exit turn loop
+            b. Cancel
+                1. Return to 1
+    e. End turn
+        1. Exit turn loop
+
+
+
+Turn order display
+==================
+Show current actor at top
+Display & highlight actors w/ waitClockTicks ==0 && AP>=APForTurn in order of highest AP - APForTurn
+Display & highlight actors w/ waitClockTicks ==-1 && AP>=APForTurn in order of highest AP - APForTurn
+Display living actors in order of highest AP - APForTurn
+For each living actor, display AP:APForTurn
+
+When an actor is killed (HP <= 0)
+=================================
+AP = 0
+HP = 0
