@@ -31,7 +31,7 @@ public class actor {
         this.setApForTurn(60);
         this.setMaxAp(100);
         this.setCurAp(this.getMaxAp());
-        this.setMoveApCost(10);
+        this.setMoveApCost(30);
         this.setPos(position);
         this.setFaction("TestFaction");
         this.name=name;
@@ -49,7 +49,7 @@ public class actor {
         System.out.print("max ap:");System.out.println(this.getMaxAp());
         System.out.print("cur ap:");System.out.println(this.getCurAp());
         System.out.print("mvcost:");System.out.println(this.getMoveApCost());
-        System.out.print("factn :");System.out.println(this.getFaction());
+        System.out.print("facton:");System.out.println(this.getFaction());
         System.out.print("positn:");System.out.print(this.getPos().x);System.out.print(",");System.out.println(this.getPos().y);
     }
 
@@ -159,5 +159,5 @@ public class actor {
     public void setPos(Point new_position){
         //possible array linking error in the future
         this.position=new_position;
-    }//  getters and setters
-}
+    }
+} //getters and setters

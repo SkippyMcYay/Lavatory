@@ -46,6 +46,9 @@ public class board {
         }
         System.out.println("something went wrong removing "+individual.name+" from the world.");
     }
+    public int queryLocation(int x,int y){
+        return combatant_map[x][y];
+    }
 
     //Tentative. Need this so an external function can call getMoveRange
     public actor getCharacter(int index){
@@ -53,7 +56,10 @@ public class board {
     }
 
     public void setTerrain(int x, int y, int type){
-        terrain_map[x][y] = type;
+            terrain_map[x][y] = type;
+        }
+    public int getTerrain(int x, int y){
+        return this.terrain_map[x][y];
     }
 
     public int[][] getMoveRange(actor person){

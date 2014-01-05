@@ -24,7 +24,7 @@ Character Parameters
 //AP needed for turn (need a name for this)
 //Current AP
 //Max AP (not really necessary until turn delaying is implemented)
-*//Faction
+//Faction
 
 Classes
 =======
@@ -52,22 +52,27 @@ Thief
     standard attack-low cost, low damage, range 1
     strong attack-med cost, low damage unless behind target, range 1
     special ability-med cost, no damage, range 3, steals the ap of target entity and gives to ally?
-    
+
 Combat
 ======
 Attack of ability - defense
 
 Terrain
 =======
-None!
+~//passable/impassable
+~faster/slower AP gain
+~damage boost/reduction
+
+
+
 
 P-reactions
 =========
 Take a turn when you get targeted by someone else
-Player is prompted if they want to react
-During reaction turn AP costs are doubled, or alternatively have an initial reaction cost
-Your AP starts at your current amount when you react, not your [AP needed for turn] value
-After your reaction, your opponent's action completes
+Player is prompted if they want to p-react
+During p-reaction turn AP costs are doubled, or alternatively have an initial reaction cost
+Your AP starts at your current amount when you p-react, not your [AP needed for turn] value
+After your p-reaction, your opponent's action completes
 	-If possible: make attacks track if the target remains in attack range
 
 Possible Class Based P-reactions
