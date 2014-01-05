@@ -4,7 +4,7 @@ import java.awt.Point;
 
 public class actor {
 
-    private String faction;
+    private int faction;
     private int max_hp;
     private int cur_hp;
     private int max_mp;
@@ -16,6 +16,7 @@ public class actor {
     private int max_ap;
     private int cur_ap;
     private int move_ap_cost;
+    private int waitTime;
     private Point position;
     public String name;
 
@@ -33,7 +34,8 @@ public class actor {
         this.setCurAp(this.getMaxAp());
         this.setMoveApCost(30);
         this.setPos(position);
-        this.setFaction("TestFaction");
+        this.setFaction(0);
+        this.setWaitTime(0);
         this.name=name;
     }
 
@@ -147,11 +149,17 @@ public class actor {
     public void setMoveApCost(int x){
         this.move_ap_cost=x;
     }
-    public String getFaction(){
+    public int getFaction(){
         return this.faction;
     }
-    public void setFaction(String fact){
+    public void setFaction(int fact){
         this.faction = fact;
+    }
+    public int getWaitTime(){
+        return this.waitTime;
+    }
+    public void setWaitTime(int time){
+        this.waitTime = time;
     }
     public Point getPos(){
         return this.position;

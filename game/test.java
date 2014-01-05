@@ -1,7 +1,7 @@
 // to access a file the string should read something like ".\\game\\folder\\file.java"
 import entity.*;
 import java.awt.Point;
-import display.Window;
+//import display.Window;
 
 public class test{
     public static void main(String args[]){
@@ -15,24 +15,23 @@ public class test{
 
         Point position = new Point(2,2);
         actor person=new actor("james",position);
-        person.setFaction("Blueberry Destroyers");
+        person.setFaction(0);
         world.addCharacter(person);
 
         Point position2 = new Point(2,1);
         actor someone=new actor("Indestructible James",position2);
-        someone.setFaction("Inundefeatedable");
+        someone.setFaction(1);
         world.addCharacter(someone);
 
         Point position3 = new Point(4,2);
         actor dude=new actor("McDuggleton",position3);
-        dude.setFaction("Blueberry Destroyers");
+        dude.setFaction(0);
         world.addCharacter(dude);
-        int turnout[][]=world.getMoveRange(world.getCharacter(0));
+        int turnout[][]=world.getMoveRange(world.getCombatant(0));
 
-        Window window=new Window(world);
+        //Window window=new Window(world);
         world.displayBoard();
         world.displayMoveRange(turnout);
-
 
     }
 }

@@ -1,11 +1,11 @@
 Game loop
 =========
-1. While waitClockTicks = 0 && AP >= APForTurn  for at least one actor
+1. While waitTime = 0 && AP >= APForTurn  for at least one actor
     a. Start turn loop for actor with highest AP - APForTurn (needs tiebreaker eventually)
-2. While waitClockTicks = -1 && AP >= APForTurn for at least one actor
+2. While waitTime = -1 && AP >= APForTurn for at least one actor
     a. Start turn loop for actor with highest AP - APForTurn
 3. Increase all living actors' AP by APGainPerTurn (same for everyone)
-4. Decrease WaitClockTicks by 1 for each actor with waitClockTicks >= 0
+4. Decrease waitTime by 1 for each actor with waitTime >= 0
 
 Turn loop
 =========
@@ -26,6 +26,7 @@ Turn loop
                         3. If action is offensive, prompt targeted actor for preaction
                             a. If confirmed, start turn loop for targeted actor
                         4. Resolve action if target actor still in range
+                        5. Return to 1
                     b. Invalid space selected
                         1. Error message/sound, or do nothing
                         2. Return to 2a2a1
@@ -50,11 +51,11 @@ Turn loop
         2. Exit turn loop
     d. Delay
         1. Display turn order
-            a. If target actor's waitClockTicks == 0 || their AP >= APForTurn, they can't be selected
+            a. If target actor's waitTime == 0 || their AP >= APForTurn, they can't be selected
             b. All others can be selected
         2. Wait for following events
             a. Actor selected
-                1. This actor's waitClockTicks = target's Ceiling((APForTurn - AP)/APGainPerTurn)
+                1. This actor's waitTime = target's Ceiling((APForTurn - AP)/APGainPerTurn)
                 2. Exit turn loop
             b. Cancel
                 1. Return to 1
@@ -66,8 +67,8 @@ Turn loop
 Turn order display
 ==================
 Show current actor at top
-Display & highlight actors w/ waitClockTicks ==0 && AP>=APForTurn in order of highest AP - APForTurn
-Display & highlight actors w/ waitClockTicks ==-1 && AP>=APForTurn in order of highest AP - APForTurn
+Display & highlight actors w/ waitTime ==0 && AP>=APForTurn in order of highest AP - APForTurn
+Display & highlight actors w/ waitTime ==-1 && AP>=APForTurn in order of highest AP - APForTurn
 Display living actors in order of highest AP - APForTurn
 For each living actor, display AP:APForTurn
 
