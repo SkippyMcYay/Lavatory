@@ -14,17 +14,17 @@ public class test{
 
 
         Point position = new Point(2,2);
-        actor person=new actor("james",position);
+        actor person=new actor("james", "thief", position);
         person.setFaction(0);
         world.addCharacter(person);
 
-        Point position2 = new Point(2,1);
-        actor someone=new actor("Indestructible James",position2);
+        Point position2 = new Point(4,4);
+        actor someone=new actor("Indestructible James", "archer", position2);
         someone.setFaction(1);
         world.addCharacter(someone);
 
         Point position3 = new Point(4,2);
-        actor dude=new actor("McDuggleton",position3);
+        actor dude=new actor("McDuggleton", "warrior", position3);
         dude.setFaction(0);
         world.addCharacter(dude);
         int turnout[][]=world.getMoveRange(world.getCombatant(0));
@@ -32,6 +32,12 @@ public class test{
         Window window=new Window(world);
         world.displayBoard();
         world.displayMoveRange(turnout);
+
+        person.displayStats();
+        someone.displayStats();
+        dude.displayStats();
+
+
 
     }
 }

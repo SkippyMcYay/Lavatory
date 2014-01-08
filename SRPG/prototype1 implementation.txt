@@ -70,9 +70,13 @@ Show current actor at top
 Display & highlight actors w/ waitTime ==0 && AP>=APForTurn in order of highest AP - APForTurn
 Display & highlight actors w/ waitTime ==-1 && AP>=APForTurn in order of highest AP - APForTurn
 Display living actors in order of highest AP - APForTurn
-For each living actor, display AP:APForTurn
+For each living actor, display AP:APForTurn and/or APForTurn - AP
 
 When an actor is killed (HP <= 0)
 =================================
 AP = 0
 HP = 0
+
+
+What the attack formula should look like maybe
+person1.getAttack() + person1.attacks[attackID].getDamage() - person2.getDefense()
