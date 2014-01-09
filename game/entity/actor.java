@@ -2,7 +2,6 @@ package entity;
 
 import java.awt.Point;
 import java.io.IOException;
-import java.nio.file.Path;
 import data.fileLoader;
 
 public class actor {

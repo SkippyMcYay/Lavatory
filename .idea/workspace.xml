@@ -2,25 +2,29 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/game/entity/board.java" line="72" />
-    <bookmark url="file://$PROJECT_DIR$/game/display/Window.java" line="17" />
+    <bookmark url="file://$PROJECT_DIR$/game/display/Window.java" line="18" />
+    <bookmark url="file://$PROJECT_DIR$/game/unclassified/options.java" line="11" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4090ea94-a84d-4296-8296-e996605c5534" name="Default" comment="Added a new and obvious part of the coding process, running is easier than telling, also added 2 functions to the board class to assist this new development.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/display/Window.java" afterPath="$PROJECT_DIR$/game/display/Window.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/entity/actor.java" afterPath="$PROJECT_DIR$/game/entity/actor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/unclassified/options.java" afterPath="$PROJECT_DIR$/game/unclassified/options.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/test.java" afterPath="$PROJECT_DIR$/game/test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Lavatory.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1388962753963" ignored="false" />
-    <file path="/test.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1388908366062" ignored="false" />
+    <file path="/Dummy.txt" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1389288198468" ignored="false" />
+    <file path="/test.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1389292373937" ignored="false" />
     <file path="/fragment.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1388906231359" ignored="false" />
     <file path="/board.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1388911581796" ignored="false" />
     <file path="/character.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1386557328296" ignored="false" />
-    <file path="/options.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1388884569953" ignored="false" />
+    <file path="/options.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1389292832718" ignored="false" />
     <file path="/prototype 1.txt" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1386494331093" ignored="false" />
     <file path="/james_frame_test.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1388704457531" ignored="false" />
     <file path="/DisplayBoard.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1388868729468" ignored="false" />
-    <file path="/Window.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1388912826484" ignored="false" />
+    <file path="/Window.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1389293838828" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +39,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -71,7 +76,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -84,10 +88,8 @@
       <file leaf-file-name="test.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game/test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="27" column="27" selection-start="795" selection-end="795" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,7 +97,16 @@
       <file leaf-file-name="board.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game/entity/board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0">
+            <state line="141" column="20" selection-start="4568" selection-end="4568" vertical-scroll-proportion="-6.84">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="options.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/unclassified/options.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="107" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -104,10 +115,8 @@
       <file leaf-file-name="Window.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game/display/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="34" selection-start="279" selection-end="279" vertical-scroll-proportion="-0.037694015">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="52" column="63" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.39906102">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -137,10 +146,11 @@
         <option value="$PROJECT_DIR$/SRPG/prototype 1.txt" />
         <option value="$PROJECT_DIR$/game/display/james_frame_test.java" />
         <option value="$PROJECT_DIR$/game/display/DisplayBoard.java" />
-        <option value="$PROJECT_DIR$/game/unclassified/options.java" />
         <option value="$PROJECT_DIR$/game/entity/board.java" />
-        <option value="$PROJECT_DIR$/game/display/Window.java" />
+        <option value="$PROJECT_DIR$/game/entity/actor.java" />
         <option value="$PROJECT_DIR$/game/test.java" />
+        <option value="$PROJECT_DIR$/game/unclassified/options.java" />
+        <option value="$PROJECT_DIR$/game/display/Window.java" />
       </list>
     </option>
   </component>
@@ -190,126 +200,9 @@
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-  </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/SRPG/prototype1 implementation.txt</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/game/entity/actor.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/game/entity/board.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/game/test.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/game/unclassified/options.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/game/unclassified/gameLoop.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.testConfiguration">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -324,6 +217,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -351,19 +257,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -458,7 +351,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1032" height="746" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -552,33 +445,17 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/game/entity/board.java">
+    <entry file="file://$PROJECT_DIR$/game/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="24" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/unclassified/options.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game/test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -599,16 +476,12 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/javax/swing/JLabel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="220" column="11" selection-start="7069" selection-end="7069" vertical-scroll-proportion="0.028716216">
-          <folding />
-        </state>
+        <state line="220" column="11" selection-start="7069" selection-end="7069" vertical-scroll-proportion="0.028716216" />
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/java/awt/Container.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1488" column="20" selection-start="57706" selection-end="57706" vertical-scroll-proportion="0.68566495">
-          <folding />
-        </state>
+        <state line="1488" column="20" selection-start="57706" selection-end="57706" vertical-scroll-proportion="0.68566495" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SRPG/prototype1 implementation.txt">
@@ -616,49 +489,55 @@
         <state line="20" column="0" selection-start="821" selection-end="821" vertical-scroll-proportion="0.5743243" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/entity/actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="13" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game/display/james_frame_test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="36" selection-start="56" selection-end="56" vertical-scroll-proportion="0.07538803">
-          <folding />
-        </state>
+        <state line="2" column="36" selection-start="56" selection-end="56" vertical-scroll-proportion="0.07538803" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/unclassified/options.java">
+    <entry file="file://$PROJECT_DIR$/game/data/roles/archer">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="29" selection-start="106" selection-end="106" vertical-scroll-proportion="0.15077606">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/entity/board.java">
+    <entry file="file://$PROJECT_DIR$/game/entity/actor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0">
+        <state line="82" column="29" selection-start="2975" selection-end="2975" vertical-scroll-proportion="-2.2398648">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="27" column="27" selection-start="795" selection-end="795" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/unclassified/gameLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="20" selection-start="1104" selection-end="1104" vertical-scroll-proportion="1.1308204">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/unclassified/options.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="107" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/entity/board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="20" selection-start="4568" selection-end="4568" vertical-scroll-proportion="-6.84">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/display/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="34" selection-start="279" selection-end="279" vertical-scroll-proportion="-0.037694015">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="52" column="63" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.39906102">
+          <folding />
         </state>
       </provider>
     </entry>

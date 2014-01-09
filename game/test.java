@@ -7,6 +7,7 @@ public class test{
     public static void main(String args[]){
 
         board world=new board();
+        Window window=new Window();
 
         for (int i=0; i<5; i++){
             world.setTerrain(i, 4, 1);
@@ -29,13 +30,13 @@ public class test{
         world.addCharacter(dude);
         int turnout[][]=world.getMoveRange(world.getCombatant(0));
 
-        Window window=new Window(world);
-        world.displayBoard();
         world.displayMoveRange(turnout);
 
         person.displayStats();
         someone.displayStats();
         dude.displayStats();
+
+        window.update(world);
 
 
 
