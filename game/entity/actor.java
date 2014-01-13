@@ -51,10 +51,22 @@ public class actor {
         return stats[s.getId()];
     }
     public void setStat(stat s, int value){
+        switch (s){
+            case CUR_HP:
+                if (value>this.getStat(MAX_HP)) value = this.getStat(MAX_HP);
+                break;
+            case CUR_MP:
+                if (value>this.getStat(MAX_MP)) value = this.getStat(MAX_MP);
+                break;
+            case CUR_AP:
+                if (value>this.getStat(MAX_AP)) value = this.getStat(MAX_AP);
+                break;
+        }
+        if (value<0) value = 0;
         stats[s.getId()] = value;
     }
     public void addStat(stat s, int value){
-        stats[s.getId()] += value;
+        this.setStat(s, value + this.getStat(s));
     }
     public String getRole(){
         return this.role;

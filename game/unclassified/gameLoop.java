@@ -36,9 +36,7 @@ public class gameLoop {
             }
             for (actor dude:this.Board.getCombatants()){
                 if (dude.getStat(CUR_HP) > 0){
-                    int ap = dude.getStat(CUR_AP) + apGainPerTurn;
-                    if (ap>dude.getStat(MAX_AP)) ap = dude.getStat(MAX_AP);
-                    dude.setStat(CUR_AP, ap);
+                    dude.addStat(CUR_AP, apGainPerTurn);
                     int waitTime = dude.getWaitTime();
                     if (waitTime > -1) dude.setWaitTime(waitTime - 1);
                 }

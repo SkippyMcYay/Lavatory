@@ -1,5 +1,21 @@
+Format: Enumeration (value(s))
+
 Range types
 ============
 -Self
--Actor (uses actor's range value)
--
+-Actor's range
+-Constant (value)
+-AP (costPerSpace)
+
+Action Effects
+==============
+-Set stat (value)
+-Change stat (value)
+-Move actor (x, y)
+-Knockback (spaces)
+
+Target types
+============
+Ally
+Enemy
+Both
