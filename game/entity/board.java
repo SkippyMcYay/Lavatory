@@ -1,6 +1,8 @@
 package entity;
 
 import unclassified.options;
+import static unclassified.stat.*;
+
 import java.awt.Point;
 import java.util.Vector;
 
@@ -65,8 +67,8 @@ public class board {
             }
         }
         Point pos = person.getPos();
-        ap_remaining[pos.x][pos.y] = person.getCurAp();
-        getMoveRangeHelper(ap_remaining, pos.x, pos.y, person.getMoveApCost(), person.getFaction());
+        ap_remaining[pos.x][pos.y] = person.getStat(CUR_AP);
+        getMoveRangeHelper(ap_remaining, pos.x, pos.y, person.getStat(MOVE_AP_COST), person.getFaction());
         ap_remaining[pos.x][pos.y] = -1;
         for (int i=0; i<this.board_size_x; i++){
             for (int j=0; j<this.board_size_y; j++){

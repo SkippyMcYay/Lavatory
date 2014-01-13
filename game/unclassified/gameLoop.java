@@ -1,16 +1,16 @@
 package unclassified;
 
 import entity.*;
-import unclassified.options;
+import static unclassified.stat.*;
 
 public class gameLoop {
     public gameLoop(board brd){
         this.Board = brd;
         for (actor dude:this.Board.getCombatants()){
-            dude.setCurAp(0);
+            dude.setStat(CUR_AP, 0);
             dude.setWaitTime(-1);
-            dude.setCurHp(dude.getMaxHp());
-            dude.setCurMp(dude.getMaxMp());
+            dude.setStat(CUR_HP, dude.getStat(MAX_HP));
+            dude.setStat(CUR_MP, dude.getStat(MAX_MP));
         };
     }
 
@@ -21,7 +21,7 @@ public class gameLoop {
                     actor readiestActor = null;
                     int bestApDiff = -1, apDiff;
                     for (actor dude:this.Board.getCombatants()){
-                        apDiff = dude.getCurAp()-dude.getApForTurn();
+                        apDiff = dude.getStat(CUR_AP)-dude.getStat(AP_FOR_TURN);
                         if (dude.getWaitTime() == waitTime && apDiff > bestApDiff){
                             bestApDiff = apDiff;
                             readiestActor = dude;
@@ -35,10 +35,10 @@ public class gameLoop {
                 }
             }
             for (actor dude:this.Board.getCombatants()){
-                if (dude.getCurHp() > 0){
-                    int ap = dude.getCurAp() + apGainPerTurn;
-                    if (ap>dude.getMaxAp()) ap = dude.getMaxAp();
-                    dude.setCurAp(ap);
+                if (dude.getStat(CUR_HP) > 0){
+                    int ap = dude.getStat(CUR_AP) + apGainPerTurn;
+                    if (ap>dude.getStat(MAX_AP)) ap = dude.getStat(MAX_AP);
+                    dude.setStat(CUR_AP, ap);
                     int waitTime = dude.getWaitTime();
                     if (waitTime > -1) dude.setWaitTime(waitTime - 1);
                 }

@@ -2,6 +2,7 @@
 import entity.*;
 import java.awt.Point;
 import display.Window;
+import static unclassified.stat.*;
 
 public class test{
     public static void main(String args[]){
@@ -19,7 +20,7 @@ public class test{
         person.setFaction(0);
         world.addCharacter(person);
 
-        Point position2 = new Point(4,4);
+        Point position2 = new Point(4,5);
         actor someone=new actor("Indestructible James", "archer", position2);
         someone.setFaction(1);
         world.addCharacter(someone);
@@ -28,6 +29,7 @@ public class test{
         actor dude=new actor("McDuggleton", "warrior", position3);
         dude.setFaction(0);
         world.addCharacter(dude);
+        world.getCombatant(0).setStat(CUR_AP, 50);
         int turnout[][]=world.getMoveRange(world.getCombatant(0));
 
         world.displayMoveRange(turnout);
