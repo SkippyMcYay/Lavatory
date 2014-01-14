@@ -63,6 +63,19 @@ Turn loop
         1. Exit turn loop
 
 
+Game/Interface States
+=====================
+Format: -Option -> Result state
+
+-Normal
+    -Click on menu -> Normal(diff menu)/Select_Space
+    -Click on actor (displays stats)
+-Select_Space
+    -Click on highlighted space -> Normal/Prompt
+    -Click anywhere else -> Normal
+-Prompt
+    -Click on option -> Normal/Prompt(another prompt)
+
 
 Turn order display
 ==================

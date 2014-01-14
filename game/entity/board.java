@@ -25,26 +25,21 @@ public class board {
 
     public void addCharacter(actor individual){
         if (this.combatants.size() >= max_combatants){
-            System.out.println("Cannot add combatant"+individual.name+": combatant limit reached.");
+            System.out.println("Cannot add combatant"+individual.getName()+": combatant limit reached.");
             return;
         }
         this.combatants.add(individual);
-        this.combatant_map[individual.getPos().x][individual.getPos().y] = this.combatants.size()-1;
+        this.combatant_map[individual.getPos().x][individual.getPos().y] = individual;
     }
 
     public void removeCharacter(actor individual){
         if (!this.combatants.remove(individual)){
-            System.out.println("something went wrong removing "+individual.name+" from the world.");
+            System.out.println("something went wrong removing "+individual.getName()+" from the world.");
         }
     }
 
-    public int queryLocation(int x,int y){
+    public actor getCombatantAt(int x, int y){
         return combatant_map[x][y];
-    }
-
-    //Tentative. Need this so an external function can call getMoveRange
-    public actor getCombatant(int index){
-        return combatants.get(index);
     }
 
     public Vector<actor> getCombatants(){
@@ -72,7 +67,7 @@ public class board {
         ap_remaining[pos.x][pos.y] = -1;
         for (int i=0; i<this.board_size_x; i++){
             for (int j=0; j<this.board_size_y; j++){
-                if (combatant_map[i][j]!=-1) ap_remaining[i][j] = -1;
+                if (combatant_map[i][j]!=null) ap_remaining[i][j] = -1;
             }
         }
         return ap_remaining;
@@ -103,9 +98,9 @@ public class board {
             else if (i==1 && ++cur_x >= board_size_x) break;
             else if (i==2 && --cur_y < 0) break;
             else if (i==3 && ++cur_y >= board_size_y) break;
-            int combatant_index = combatant_map[cur_x][cur_y];
+            actor combatant = combatant_map[cur_x][cur_y];
             if (terrain_map[cur_x][cur_y]==0 && ap_remaining[cur_x][cur_y] < next_space_ap
-                    && (combatant_index==-1 || combatants.get(combatant_index).getFaction()==faction)) {
+                    && (combatant==null || combatant.getFaction()==faction)) {
                 ap_remaining[cur_x][cur_y] = next_space_ap;
                 getMoveRangeHelper(ap_remaining, cur_x, cur_y, move_cost, faction);
             }
@@ -114,10 +109,9 @@ public class board {
 
     private void displaySpace(int x, int y){
         char c = '$';
-        int actorId = this.combatant_map[x][y];
-        if (actorId != -1){
-            char factionChar = (this.combatants.get(actorId).getFaction() == 0) ? 'a' : 'A';
-            c = (char)(actorId + factionChar);
+        actor combatant = this.combatant_map[x][y];
+        if (combatant != null){
+            c=combatant.getName().charAt(0);
         } else {
             switch(terrain_map[x][y]){
                 case 0:
@@ -135,7 +129,7 @@ public class board {
     private void setupBoard(){
         for (int i=0;i<this.board_size_x; i++){
             for(int j=0;j<this.board_size_y;j++){
-                this.combatant_map[i][j]= -1;
+                this.combatant_map[i][j]= null;
                 this.terrain_map[i][j]=0;
             }
         }
@@ -143,10 +137,8 @@ public class board {
 
     private int board_size_x=options.board_size_x;
     private int board_size_y=options.board_size_y;
-    //private int number_of_combatants=((new options().number_of_combatants<=10) ? new options().number_of_combatants:10);
     private int max_combatants=options.max_combatants;
-//    private actor[] combatants = new actor[number_of_combatants];
     private Vector<actor> combatants = new Vector<actor>();
-    private int[][] combatant_map=new int[board_size_x][board_size_y]; //TODO: should be actor array once graphics are in
+    private actor[][] combatant_map=new actor[board_size_x][board_size_y];
     private int[][] terrain_map=new int[board_size_x][board_size_y];
 }

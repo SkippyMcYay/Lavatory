@@ -27,10 +27,10 @@ public class test{
 
         Point position3 = new Point(4,2);
         actor dude=new actor("McDuggleton", "warrior", position3);
+        dude.setStat(CUR_AP, 50);
         dude.setFaction(0);
         world.addCharacter(dude);
-        world.getCombatant(0).setStat(CUR_AP, 50);
-        int turnout[][]=world.getMoveRange(world.getCombatant(0));
+        int turnout[][]=world.getMoveRange(world.getCombatantAt(4,2));
 
         world.displayMoveRange(turnout);
 

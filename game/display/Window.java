@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.Point;
-import unclassified.gameLoop;
 
 public class Window extends JFrame {
     private ImageIcon Impassable_Terrain=new ImageIcon(".\\game\\display\\Images\\Impassable_Terrain.PNG");
@@ -35,11 +34,11 @@ public class Window extends JFrame {
     private class Listener implements MouseListener{
         public void mouseEntered(MouseEvent event){
             Point coords=event.getComponent().getLocation();
-            highlight.setLocation(coords.x,coords.y);;
+            highlight.setLocation(coords.x,coords.y);
 
         }
         public void mouseExited(MouseEvent event){
-            highlight.setLocation(-1000,-1000);;
+            highlight.setLocation(-1000,-1000);
         }
         public void mouseClicked(MouseEvent event){
             Point coords=event.getComponent().getLocation();
@@ -104,7 +103,7 @@ public class Window extends JFrame {
         }
     }
     private void actorHandler(board world,int coord_x,int coord_y){
-        if(world.queryLocation(coord_x,coord_y)!=-1){
+        if(world.getCombatantAt(coord_x, coord_y)!=null){
             //actor parser code goes here
             if(true){
                 addActor(Actor,coord_x,coord_y);

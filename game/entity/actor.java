@@ -17,7 +17,7 @@ public class actor {
 
     private static int num_loaded_stats = 8;
     private static String data_folder = ".\\game\\data\\roles\\";
-    public String name;
+    private String name;
 
 //  constructor
     public actor(String name, String role, Point position){
@@ -47,6 +47,12 @@ public class actor {
         System.out.println();
     }
 
+    public String getName(){
+        return this.name;
+    }
+    public void setName(String n){
+        this.name = n;
+    }
     public int getStat(stat s){
         return stats[s.getId()];
     }
