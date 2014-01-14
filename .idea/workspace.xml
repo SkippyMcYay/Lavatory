@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4090ea94-a84d-4296-8296-e996605c5534" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Documents and Settings\HP_Administrator\My Documents\GitHub\Lavatory\game\display\james_frame_test.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/display/Window.java" afterPath="$PROJECT_DIR$/game/display/Window.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/unclassified/options.java" afterPath="$PROJECT_DIR$/game/unclassified/options.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/test.java" afterPath="$PROJECT_DIR$/game/test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/testConfiguration.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/testConfiguration.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Lavatory.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1389694646109" ignored="false" />
+    <file path="/Dummy.txt" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1389695197140" ignored="false" />
     <file path="/Window.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1389695100140" ignored="false" />
     <file path="/options.java" changelist="4090ea94-a84d-4296-8296-e996605c5534" time="1389691341203" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -542,7 +537,11 @@
       <created>1389590737056</created>
       <updated>1389590737056</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added buttons to the board, they return a string of the text they show.">
+      <created>1389695210109</created>
+      <updated>1389695210109</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -623,7 +622,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made spaces clickable, clicked spaces return their coordinates. added layers so now things will properly stack. the stack goes top level hover box, middle actors, bottom terrain.did other stuff too but can't remember" />
+    <option name="LAST_COMMIT_MESSAGE" value="added buttons to the board, they return a string of the text they show." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -643,6 +642,7 @@
     <MESSAGE value="Added a new and obvious part of the coding process, running is easier than telling, also added 2 functions to the board class to assist this new development." />
     <MESSAGE value="Roles!" />
     <MESSAGE value="Made spaces clickable, clicked spaces return their coordinates. added layers so now things will properly stack. the stack goes top level hover box, middle actors, bottom terrain.did other stuff too but can't remember" />
+    <MESSAGE value="added buttons to the board, they return a string of the text they show." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
