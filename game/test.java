@@ -20,7 +20,7 @@ public class test{
         person.setFaction(0);
         world.addCharacter(person);
 
-        Point position2 = new Point(4,5);
+        Point position2 = new Point(4,4);
         actor someone=new actor("Indestructible James", "archer", position2);
         someone.setFaction(1);
         world.addCharacter(someone);
