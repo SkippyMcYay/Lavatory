@@ -1,0 +1,5 @@
+-player selects talent
+-board gets talent's range
+-range is displayed
+-player clicks on enemy actor
+-(not necessary yet) attack forecast

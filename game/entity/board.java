@@ -54,6 +54,17 @@ public class board {
         return this.terrain_map[x][y];
     }
 
+    public boolean[][] getDirectRange(int x, int y, int rangeValue){
+        boolean[][] range = new boolean[this.board_size_x][this.board_size_y];
+        for (int i=0; i<board_size_x; i++){
+            for (int j=0; j<board_size_y; j++){
+                int distance = Math.abs(x-i) + Math.abs(y-j);
+                range[i][j] = ((distance <= rangeValue) && (distance>0));
+            }
+        }
+        return range;
+    }
+
     public int[][] getMoveRange(actor person){
         int[][] ap_remaining = new int[this.board_size_x][this.board_size_y];
         for (int i=0; i<this.board_size_x; i++){
@@ -71,6 +82,20 @@ public class board {
             }
         }
         return ap_remaining;
+    }
+
+    public void displayDirectRange(boolean[][] range){
+        for (int j=0;j<this.board_size_y; j++){
+            for(int i=0;i<this.board_size_x;i++){
+                if (range[i][j]){
+                    System.out.print("! ");
+                } else {
+                    displaySpace(i,j);
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("------------------------------");
     }
 
     public void displayMoveRange(int[][] range){

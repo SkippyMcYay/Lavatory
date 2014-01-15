@@ -34,6 +34,8 @@ public class test{
 
         world.displayMoveRange(turnout);
 
+        world.displayDirectRange(world.getDirectRange(4, 2, 3));
+
         person.displayStats();
         someone.displayStats();
         dude.displayStats();
