@@ -3,6 +3,7 @@ package entity;
 import java.awt.Point;
 import java.io.IOException;
 import data.fileLoader;
+import unclassified.options;
 import unclassified.stat;
 import static unclassified.stat.*;
 
@@ -33,6 +34,24 @@ public class actor {
         this.name=name;
     }
 
+
+    public boolean canPreact(){
+        int lowestCost = 999;
+        int apCost[] = new int[4];
+        apCost[0] = options.weak_attack_AP_cost;
+        apCost[1] = options.strong_attack_AP_cost;
+        apCost[2] = this.getStat(MOVE_AP_COST);
+        apCost[3] = options.defend_AP_cost;
+        for (int i=0; i<4; i++){
+            if (apCost[i]<lowestCost) lowestCost = apCost[i];
+        }
+        return (this.getStat(CUR_AP) >= lowestCost * options.preaction_multiplier);
+    }
+
+    public int getDistanceTo(Point p){
+        Point guy = this.getPos();
+        return Math.abs(guy.x-p.x) + Math.abs(guy.y-p.y);
+    }
 
     public void displayStats(){
         String defending = this.getIsDefending() ? "Defending" : "";

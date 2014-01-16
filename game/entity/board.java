@@ -46,6 +46,13 @@ public class board {
         return combatants;
     }
 
+    public void moveCombatant(actor guy, int x, int y){
+        Point oldPos = guy.getPos();
+        combatant_map[oldPos.x][oldPos.y] = null;
+        combatant_map[x][y] = guy;
+        guy.setPos(new Point(x,y));
+    }
+
     public void setTerrain(int x, int y, int type){
             terrain_map[x][y] = type;
     }

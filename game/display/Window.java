@@ -106,8 +106,8 @@ public class Window extends JFrame {
             coords.x=(coords.x-battlefield_offset_x)/tile_dimension_x;
             coords.y=(coords.y-battlefield_offset_y)/tile_dimension_y;
             clearHighlightRange();
-            update(world);
             GameLoop.tileParser(coords);
+            update(world);
         }
         public void mousePressed(MouseEvent event){}
     }
@@ -123,6 +123,7 @@ public class Window extends JFrame {
         public void mouseClicked(MouseEvent event){}
         public void mouseReleased(MouseEvent event){
             GameLoop.buttonParser(event.getComponent().getName());
+            update(world);
         }
         public void mousePressed(MouseEvent event){}
     }

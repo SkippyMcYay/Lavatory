@@ -25,5 +25,6 @@ public class options {
     public static int defend_AP_cost = 50;
     public static int weak_attack_value = 0;
     public static int strong_attack_value = 4;
+    public static float preaction_multiplier = 1.5f;
 
 }

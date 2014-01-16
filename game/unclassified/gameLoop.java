@@ -4,14 +4,29 @@ import entity.*;
 import java.awt.Point;
 import display.Window;
 import static unclassified.stat.*;
+import java.util.Stack;
 
 public class gameLoop {
     enum gameState{NORMAL, SELECT_SPACE, PROMPT}
     enum action{MOVE, WEAK_ATTACK, STRONG_ATTACK}
 
+    private class recordedAttack{
+        recordedAttack(actor guy, Point target, action act, int rng){
+            this.attacker = guy;
+            this.targetSpace = target;
+            this.actn = act;
+            this.range = rng;
+        }
+        actor attacker;
+        Point targetSpace;
+        action actn;
+        int range;
+    }
+
     public gameLoop(board brd){
         this.state = gameState.NORMAL;
         this.Board = brd;
+        this.attackStack = new Stack<recordedAttack>();
         for (actor dude:this.Board.getCombatants()){
             dude.setStat(CUR_AP, 0);
             dude.setWaitTime(-1);
@@ -20,7 +35,7 @@ public class gameLoop {
         }
     }
 
-    public void execute(){
+    public void findNextActor(){
         actor readiestActor = null;
         while (true){ //TODO: Game end condition
             for (int waitTime = 0; waitTime>=-1; waitTime--){
@@ -34,7 +49,6 @@ public class gameLoop {
                 }
                 if (readiestActor != null) {
                     this.curActor = readiestActor;
-                    System.out.println(this.curActor.getName()+" is ready to rock.");
                     this.turnBegin();
                     return;
                 }
@@ -50,34 +64,54 @@ public class gameLoop {
     }
 
     public void turnBegin(){
+        if (this.attackStack.isEmpty()){
+            System.out.println(this.curActor.getName()+" is ready to rock.");
+        } else {
+            System.out.println(this.curActor.getName()+" swiftly preacts like the wind!");
+        }
         curActor.setIsDefending(false);
+        this.state = gameState.NORMAL;
+    }
+
+    public void turnEnd(){
+        this.resolveAttackStack();
+        this.findNextActor();
     }
 
     public void buttonParser(String button){
+        int ap = curActor.getStat(CUR_AP);
+        boolean hasEnoughAp = true;
+        float preactMod = this.attackStack.isEmpty() ? 1 : options.preaction_multiplier;
         if (this.state == gameState.NORMAL){
-            if (button == "move"){
-                this.window.setHighlightRange(this.Board.getMoveRange(curActor));
+            if (button == "move" && (hasEnoughAp = ap >= curActor.getStat(MOVE_AP_COST) * preactMod)){
+                int oldMoveApCost = this.curActor.getStat(MOVE_AP_COST);
+                this.curActor.setStat(MOVE_AP_COST, (int)(oldMoveApCost * preactMod));
+                this.Board.getMoveRange(curActor);
+                this.curActor.setStat(MOVE_AP_COST, oldMoveApCost);
+                this.window.setHighlightRange(this.Board.getRangeMap());
                 this.state = gameState.SELECT_SPACE;
                 this.actn = action.MOVE;
-                this.window.update(this.Board);
-            } else if (button == "weak attack"){
+//                this.window.update(this.Board);
+            } else if (button == "weak attack" && (hasEnoughAp = ap >= options.weak_attack_AP_cost * preactMod)){
                 this.window.setHighlightRange(this.Board.getDirectRange(curActor,curActor.getStat(ATTACK_RANGE)));
                 this.state = gameState.SELECT_SPACE;
                 this.actn = action.WEAK_ATTACK;
-            } else if (button == "strong attack"){
+            } else if (button == "strong attack" && (hasEnoughAp = ap > options.strong_attack_AP_cost * preactMod)){
                 this.window.setHighlightRange(this.Board.getDirectRange(curActor,curActor.getStat(ATTACK_RANGE)));
                 this.state = gameState.SELECT_SPACE;
                 this.actn = action.STRONG_ATTACK;
-            } else if (button == "defend"){
+            } else if (button == "defend" && (hasEnoughAp = ap > options.defend_AP_cost * preactMod)){
                 curActor.setIsDefending(true);
-                curActor.addStat(CUR_AP, -options.defend_AP_cost);
+                curActor.addStat(CUR_AP, (int)(-options.defend_AP_cost * preactMod));
                 System.out.println(curActor.getName() + " takes a sexy defensive stance.");
-                this.execute();
+                //needs to delay
+                this.turnEnd();
             } else if (button == "delay"){
                 System.out.println("You wish you could delay right now.");
             } else if (button == "end turn"){
-                this.execute();
+                this.turnEnd();
             }
+            if (!hasEnoughAp) System.out.println("Not enough AP!");
         }
     }
 
@@ -89,31 +123,57 @@ public class gameLoop {
             if (this.Board.getRangeMap()[p.x][p.y]!=-1){
                 this.performAction(p);
             } else {
-                this.window.clearHighlightRange();
                 this.state = gameState.NORMAL;
             }
         }
     }
 
     public void performAction(Point p){
+        float preactMod = this.attackStack.isEmpty() ? 1 : options.preaction_multiplier;
         switch (this.actn){
             case MOVE:
                 int newAp = this.Board.getRangeMap()[p.x][p.y];
-                curActor.setPos(p);
-                curActor.setStat(CUR_AP, newAp);
+                this.Board.moveCombatant(this.curActor, p.x, p.y);
+                this.curActor.setStat(CUR_AP, newAp);
                 this.state = gameState.NORMAL;
-                this.window.update(this.Board);
                 break;
             case WEAK_ATTACK:
-                curActor.addStat(CUR_AP, -options.weak_attack_AP_cost);
-                //preaction code goes here!
-                resolveAttack(p);
+                curActor.addStat(CUR_AP, (int)(-options.weak_attack_AP_cost * preactMod));
                 break;
             case STRONG_ATTACK:
-                curActor.addStat(CUR_AP, -options.strong_attack_AP_cost);
-                //preaction code!!!!
-                resolveAttack(p);
+                curActor.addStat(CUR_AP, (int)(-options.strong_attack_AP_cost * preactMod));
                 break;
+        }
+        if (this.actn==action.WEAK_ATTACK || this.actn==action.STRONG_ATTACK){
+            actor target = this.Board.getCombatantAt(p.x,p.y);
+            if (target!=null){
+                System.out.println(curActor.getName()+" attempts to attack "+target.getName()+"!");
+                if (target.canPreact()){
+                    if (true){ //preaction prompt! goes here
+                        recordedAttack atk = new recordedAttack(curActor, p, this.actn, curActor.getStat(ATTACK_RANGE));
+                        this.attackStack.push(atk);
+                        this.curActor = target;
+                        turnBegin();
+                    } else {
+                        resolveAttack(p);
+                    }
+                }
+            }
+        }
+    }
+
+    public void resolveAttackStack(){
+        while (!this.attackStack.isEmpty()){
+            recordedAttack atk = attackStack.pop();
+            if (atk.attacker.getStat(CUR_HP)>0){
+                if (atk.attacker.getDistanceTo(atk.targetSpace)<=atk.range){
+                    this.curActor = atk.attacker;
+                    this.actn = atk.actn;
+                    resolveAttack(atk.targetSpace);
+                } else {
+                    System.out.println(atk.attacker.getName()+" is too far to land his/her attack!");
+                }
+            }
         }
     }
 
@@ -136,12 +196,14 @@ public class gameLoop {
                 System.out.println(target.getName()+" has died! His or her heart and eardrums have ruptured.");
             }
         }
+        this.state=gameState.NORMAL;
     }
 
     public void setWindow(Window w){
         this.window = w;
     }
 
+    private Stack<recordedAttack> attackStack;
     private action actn;
     private Window window;
     private gameState state;

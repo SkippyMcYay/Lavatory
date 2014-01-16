@@ -3,7 +3,6 @@ import entity.*;
 import java.awt.Point;
 import display.Window;
 import unclassified.gameLoop;
-import static unclassified.stat.*;
 
 public class test{
     public static void main(String args[]){
@@ -43,7 +42,7 @@ public class test{
 //        dude.displayStats();
 
         window.update(world);
-        GameLoop.execute();
+        GameLoop.findNextActor();
 
     }
 }
