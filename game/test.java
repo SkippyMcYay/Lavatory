@@ -39,6 +39,7 @@ public class test{
         someone.displayStats();
         dude.displayStats();
 
+        window.setHighlightRange(turnout);
         window.update(world);
 
 

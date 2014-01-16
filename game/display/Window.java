@@ -18,6 +18,7 @@ public class Window extends JFrame {
     private ImageIcon Warrior=new ImageIcon(".\\game\\display\\Images\\Warrior.PNG");
 
     private ImageIcon Tile_Highlight=new ImageIcon(".\\game\\display\\Images\\Tile_Template.png");
+    private ImageIcon Movement_Highlight=new ImageIcon(".\\game\\display\\Images\\Move_Space.png");
     private ImageIcon Button_Highlight=new ImageIcon(".\\game\\display\\Images\\Button_Highlight.png");
 
     private int tile_dimension_x=options.sprite_dimension_x;
@@ -37,6 +38,9 @@ public class Window extends JFrame {
     private Component tile_highlight=new JLabel(Tile_Highlight);
     private Component button_highlight=new JLabel(Button_Highlight);
 
+    private int[][] highlightRange=new int[board_size_x][board_size_y];
+    private Component[][] highlightedSpaces=new Component[board_size_x][board_size_y];
+
     public Window(){
         super("Tactical Game");
         //setLayout(new GridLayout(board_size_x,board_size_y));
@@ -44,20 +48,42 @@ public class Window extends JFrame {
         setSize(window_x, window_y);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         buttonHandler();
+
     }
     public void update(board world){
-        addActor(Tile_Highlight,-10,-10);
         int coord_x,coord_y;
         for(coord_y=0;coord_y<board_size_y;coord_y++){
             for(coord_x=0;coord_x<board_size_x;coord_x++){
-                actorHandler(world,coord_x,coord_y);
+                System.out.println("tile");
                 tileHandler(world,coord_x,coord_y);
+                System.out.println("actor");
+                actorHandler(world,coord_x,coord_y);
+                System.out.println("range");
+                rangeHighlightHandler(coord_x,coord_y);
+                System.out.println("high");
                 highlightHandler();
+                System.out.println("button");
                 buttonHandler();
             }
         }
         setVisible(true);
     }
+    public void setHighlightRange(int[][] spaces){
+        clearHighlightRange();
+        highlightRange=spaces;
+        for(int coord_y=0;coord_y<board_size_y;coord_y++){
+            for(int coord_x=0;coord_x<board_size_x;coord_x++){
+                if (spaces[coord_x][coord_y]!=-1){
+                    Component newSpace=new JLabel(Movement_Highlight);
+                    highlightedSpaces[coord_x][coord_y]=newSpace;
+                }
+            }
+        }
+    }
+    public void clearHighlightRange(){
+
+    }
+
     private class tileListener implements MouseListener{
         public void mouseEntered(MouseEvent event){
             Point coords=event.getComponent().getLocation();
@@ -94,54 +120,51 @@ public class Window extends JFrame {
         public void mouseReleased(MouseEvent event){}
         public void mousePressed(MouseEvent event){}
     }
-    private void addActor(ImageIcon image,int coord_x,int coord_y){
+    private void addComponent(Component component,int coord_x,int coord_y){
         int x=coord_x*tile_dimension_x+battlefield_offset_x;
         int y=coord_y*tile_dimension_y+battlefield_offset_y;
-        JLabel Cur_Actor=new JLabel(image);
 
-        add(Cur_Actor,0);
-        Cur_Actor.setSize(tile_dimension_x,tile_dimension_y);
-        Cur_Actor.setLocation(x,y);
-    }
-    private void addTile(ImageIcon image,int coord_x,int coord_y){
-        int x=coord_x*tile_dimension_x+battlefield_offset_x;
-        int y=coord_y*tile_dimension_y+battlefield_offset_y;
-        tileListener listener=new tileListener();
-        Component Cur_Terrain=new JLabel(image);
-
-        Cur_Terrain.addMouseListener(listener);
-        add(Cur_Terrain,-1);
-        Cur_Terrain.setSize(tile_dimension_x,tile_dimension_y);
-        Cur_Terrain.setLocation(x,y);
+        add(component,0);
+        component.setSize(tile_dimension_x,tile_dimension_y);
+        component.setLocation(x,y);
     }
     private void tileHandler(board world,int coord_x,int coord_y){
+        Component component=new JLabel();
         if(world.getTerrain(coord_x,coord_y)==0){
-            addTile(Passable_Terrain,coord_x,coord_y);
+            component=new JLabel(Passable_Terrain);
         }else if(world.getTerrain(coord_x,coord_y)==1){
-            addTile(Impassable_Terrain,coord_x,coord_y);
+            component=new JLabel(Impassable_Terrain);
         }else{
             System.out.println("that terrain type not covered in Window.tileHandler");
         }
+        component.addMouseListener(new tileListener());
+        addComponent(component,coord_x,coord_y);
+
     }
     private void actorHandler(board world,int coord_x,int coord_y){
         if(world.getCombatantAt(coord_x, coord_y)!=null){
-            ImageIcon Actor=Warrior;
+            Component Actor=new JLabel();
             if(world.getCombatantAt(coord_x,coord_y).getRole()=="thief"){
-                Actor=Thief;
+                Actor=new JLabel(Thief);
             }else if(world.getCombatantAt(coord_x,coord_y).getRole()=="warrior"){
-                Actor=Warrior;
+                Actor=new JLabel(Warrior);
             }else if(world.getCombatantAt(coord_x,coord_y).getRole()=="archer"){
-                Actor=Archer;
+                Actor=new JLabel(Archer);
             }else{
                 System.out.println("that is not a role: Window.actorHandler");
             }
-            addActor(Actor,coord_x,coord_y);
+            addComponent(Actor,coord_x,coord_y);
         }
     }
     private void highlightHandler(){
         add(tile_highlight,0);
         tile_highlight.setSize(tile_dimension_x,tile_dimension_y);
         tile_highlight.setLocation(-1000,-1000);
+    }
+    private void rangeHighlightHandler(int coord_x,int coord_y){
+        if(highlightedSpaces[coord_x][coord_y]!=null){
+            addComponent(highlightedSpaces[coord_x][coord_y],coord_x,coord_y);
+        }
     }
     private void buttonHandler(){
         int space_between_buttons=(window_y/(board_size_x/4));
@@ -166,4 +189,5 @@ public class Window extends JFrame {
 
         }
     }
+
 }
