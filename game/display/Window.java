@@ -2,16 +2,16 @@ package display;
 
 import entity.board;
 import unclassified.options;
-import java.awt.Component;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
+
+import java.awt.*;
+import javax.swing.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
-import java.awt.Point;
+
 import unclassified.gameLoop;
 
 public class Window extends JFrame {
+
     private ImageIcon Impassable_Terrain=new ImageIcon(".\\game\\display\\Images\\Impassable_Terrain.PNG");
     private ImageIcon Passable_Terrain=new ImageIcon(".\\game\\display\\Images\\Passable_Terrain.PNG");
     private ImageIcon Thief=new ImageIcon(".\\game\\display\\Images\\Thief.PNG");
@@ -37,13 +37,18 @@ public class Window extends JFrame {
     private String[] buttons=options.buttons;
 
     private Component tile_highlight=new JLabel(Tile_Highlight);
-    private Component button_highlight=new JLabel(Button_Highlight);
 
     private gameLoop GameLoop;
     private board world;
 
-    private int[][] highlightRange=new int[board_size_x][board_size_y];
     private Component[][] highlightedSpaces=new Component[board_size_x][board_size_y];
+
+    private JPanel Tile_Layer=new JPanel();
+    private JPanel Actor_Layer=new JPanel();
+    private JPanel Range_Layer=new JPanel();
+    private JPanel Highlight_Layer=new JPanel();
+    private JPanel Button_Layer=new JPanel();
+
 
     public Window(gameLoop g){
         super("Tactical Game");
@@ -53,24 +58,66 @@ public class Window extends JFrame {
         setSize(window_x, window_y);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         buttonHandler();
+        Tile_Layer.setLayout(null);
+        Actor_Layer.setLayout(null);
+        Range_Layer.setLayout(null);
+        Highlight_Layer.setLayout(null);
+        Button_Layer.setLayout(null);
+        Tile_Layer.setSize(tile_dimension_x * board_size_x, tile_dimension_y * board_size_y);
+        Actor_Layer.setSize(tile_dimension_x * board_size_x, tile_dimension_y * board_size_y);
+        Range_Layer.setSize(tile_dimension_x * board_size_x, tile_dimension_y * board_size_y);
+        Highlight_Layer.setSize(tile_dimension_x * board_size_x, tile_dimension_y * board_size_y);
+        Button_Layer.setSize(battlefield_offset_x, window_y);
+        Tile_Layer.setBackground(new Color(0,0,0,0));
+        Actor_Layer.setBackground(new Color(0,0,0,0));
+        Range_Layer.setBackground(new Color(0,0,0,0));
+        Highlight_Layer.setBackground(new Color(0,0,0,0));
+        Button_Layer.setBackground(new Color(0,0,0,0));
+        Tile_Layer.setLocation(battlefield_offset_x, battlefield_offset_y);
+        Actor_Layer.setLocation(battlefield_offset_x, battlefield_offset_y);
+        Range_Layer.setLocation(battlefield_offset_x, battlefield_offset_y);
+        Highlight_Layer.setLocation(battlefield_offset_x,battlefield_offset_y);
+        add(Button_Layer);
+        highlightHandler();
+        Highlight_Layer.add(tile_highlight);
+        add(Highlight_Layer);
+        add(Range_Layer);
+        add(Actor_Layer);
+        add(Tile_Layer);
 
     }
     public void update(board world){
         this.world=world;
+        remove(Tile_Layer);
+        remove(Actor_Layer);
+        remove(Range_Layer);
+        remove(Button_Layer);
+        Tile_Layer.removeAll();
+        Actor_Layer.removeAll();
+        Range_Layer.removeAll();
+        Button_Layer.removeAll();
+        repaint();
+
+        buttonHandler();
+
         for(int coord_y=0;coord_y<board_size_y;coord_y++){
             for(int coord_x=0;coord_x<board_size_x;coord_x++){
-                tileHandler(world,coord_x,coord_y);
-                actorHandler(world,coord_x,coord_y);
                 rangeHighlightHandler(coord_x,coord_y);
-                highlightHandler();
-                buttonHandler();
+                actorHandler(coord_x,coord_y);
+                tileHandler(coord_x,coord_y);
+
+
             }
         }
+        add(Button_Layer);
+        add(Highlight_Layer);
+        add(Range_Layer);
+        add(Actor_Layer);
+        add(Tile_Layer);
         setVisible(true);
     }
     public void setHighlightRange(int[][] spaces){
         clearHighlightRange();
-        highlightRange=spaces;
         for(int coord_y=0;coord_y<board_size_y;coord_y++){
             for(int coord_x=0;coord_x<board_size_x;coord_x++){
                 if (spaces[coord_x][coord_y]!=-1){
@@ -95,16 +142,16 @@ public class Window extends JFrame {
         public void mouseEntered(MouseEvent event){
             Point coords=event.getComponent().getLocation();
             tile_highlight.setLocation(coords.x,coords.y);
-
         }
         public void mouseExited(MouseEvent event){
-            tile_highlight.setLocation(-1000,-1000);
+            highlightHandler();
+            update(world);
         }
         public void mouseClicked(MouseEvent event){}
         public void mouseReleased(MouseEvent event){
             Point coords=event.getComponent().getLocation();
-            coords.x=(coords.x-battlefield_offset_x)/tile_dimension_x;
-            coords.y=(coords.y-battlefield_offset_y)/tile_dimension_y;
+            coords.x=coords.x/tile_dimension_x;
+            coords.y=coords.y/tile_dimension_y;
             clearHighlightRange();
             GameLoop.tileParser(coords);
             update(world);
@@ -112,30 +159,25 @@ public class Window extends JFrame {
         public void mousePressed(MouseEvent event){}
     }
     private class buttonListener implements MouseListener{
-        public void mouseEntered(MouseEvent event){
-            Point coords=event.getComponent().getLocation();
-            button_highlight.setLocation(coords.x-1,coords.y-1);
-
-        }
-        public void mouseExited(MouseEvent event){
-            button_highlight.setLocation(-1000,-1000);
-        }
+        public void mouseEntered(MouseEvent event){}
+        public void mouseExited(MouseEvent event){        }
         public void mouseClicked(MouseEvent event){}
         public void mouseReleased(MouseEvent event){
             GameLoop.buttonParser(event.getComponent().getName());
             update(world);
+
         }
         public void mousePressed(MouseEvent event){}
     }
-    private void addComponent(Component component,int coord_x,int coord_y){
-        int x=coord_x*tile_dimension_x+battlefield_offset_x;
-        int y=coord_y*tile_dimension_y+battlefield_offset_y;
+    private void addComponent(Component component,int coord_x,int coord_y,JPanel layer){
+        int x=coord_x*tile_dimension_x;
+        int y=coord_y*tile_dimension_y;
 
-        add(component,0);
+        layer.add(component,0);
         component.setSize(tile_dimension_x,tile_dimension_y);
         component.setLocation(x,y);
     }
-    private void tileHandler(board world,int coord_x,int coord_y){
+    private void tileHandler(int coord_x,int coord_y){
         Component component=new JLabel();
         if(world.getTerrain(coord_x,coord_y)==0){
             component=new JLabel(Passable_Terrain);
@@ -145,10 +187,10 @@ public class Window extends JFrame {
             System.out.println("that terrain type not covered in Window.tileHandler");
         }
         component.addMouseListener(new tileListener());
-        addComponent(component,coord_x,coord_y);
+        addComponent(component,coord_x,coord_y,Tile_Layer);
 
     }
-    private void actorHandler(board world,int coord_x,int coord_y){
+    private void actorHandler(int coord_x,int coord_y){
         if(world.getCombatantAt(coord_x, coord_y)!=null){
             Component Actor=new JLabel();
             if(world.getCombatantAt(coord_x,coord_y).getRole()=="thief"){
@@ -160,17 +202,16 @@ public class Window extends JFrame {
             }else{
                 System.out.println("that is not a role: Window.actorHandler");
             }
-            addComponent(Actor,coord_x,coord_y);
+            addComponent(Actor,coord_x,coord_y,Actor_Layer);
         }
     }
     private void highlightHandler(){
-        add(tile_highlight,0);
         tile_highlight.setSize(tile_dimension_x,tile_dimension_y);
         tile_highlight.setLocation(-1000,-1000);
     }
     private void rangeHighlightHandler(int coord_x,int coord_y){
         if(highlightedSpaces[coord_x][coord_y]!=null){
-            addComponent(highlightedSpaces[coord_x][coord_y],coord_x,coord_y);
+            addComponent(highlightedSpaces[coord_x][coord_y],coord_x,coord_y,Range_Layer);
         }
     }
     private void buttonHandler(){
@@ -191,8 +232,8 @@ public class Window extends JFrame {
             text.setSize(text.getPreferredSize());
             text.setLocation(button.getWidth()/2-text.getWidth()/2+button.getLocation().x,
                     button.getHeight()/2-text.getHeight()/2+button.getLocation().y);
-            add(text);
-            add(button);
+            Button_Layer.add(text);
+            Button_Layer.add(button);
 
         }
     }

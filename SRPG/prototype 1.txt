@@ -4,14 +4,14 @@ Note: Items with a // have been put into code.
 
 Note: The answer to any question regarding the prototype is "I don't care, it's a prototype"
 
-AP system
+//AP system
 =========
-While no character has enough AP for a turn, everyone gets +X AP
-When someone gets enough AP, their turn begins
-    -Multiple characters may get turns on the same "clocktick"
+//While no character has enough AP for a turn, everyone gets +X AP
+//When someone gets enough AP, their turn begins
+//    -Multiple characters may get turns on the same "clocktick"
 
-Characters have multiple actions with different AP costs
-    -Strong and weak attack
+//Characters have multiple actions with different AP costs
+//    -Strong and weak attack
 
 Character Parameters
 ====================
@@ -24,56 +24,56 @@ Character Parameters
 //AP needed for turn (need a name for this)
 //Current AP
 //Max AP (not really necessary until turn delaying is implemented)
-//Faction
+Faction
 
 Classes
 =======
-Archer - range attack, medium move cost, med damage, high attack cost, mid-high AP for turn
-Fighter - melee attack, medium move cost, high damage, mid+high attack cost, mid AP for turn
-Thief - melee attack, low move cost, low damage, low attack cost, low-mid AP for turn
+//Archer - range attack, medium move cost, med damage, high attack cost, mid-high AP for turn
+//Fighter - melee attack, medium move cost, high damage, mid+high attack cost, mid AP for turn
+//Thief - melee attack, low move cost, low damage, low attack cost, low-mid AP for turn
 Class Abilities
 ====================
-Block-all classes should be able to block, each character who attacks lowers blockers AP, 
-  raises def by 50% perhaps?
+//Block-all classes should be able to block, each character who attacks lowers blockers AP,
+//  raises def by 50% perhaps?
 
 Possible ap-based shove
 
 Delay-no cost
 
 Archer 
-    standard attack-low cost, range of 1, low damage
-    ranged attack-high cost, mid damage, range either standardized or based on AP
+//    standard attack-low cost, range of 1, low damage
+//    ranged attack-high cost, mid damage, range either standardized or based on AP
     special ability-precision shot: high cost, (see above for range),bonus to armored?
 Fighter
-    standard attack-low cost, range of 1, mid damage
-    Strong attack-med cost,range of 1?,high damage
+//    standard attack-low cost, range of 1, mid damage
+//    Strong attack-med cost,range of 1?,high damage
     special ability-Haymaker: high cost, high damage, knocks target back
 Thief
-    standard attack-low cost, low damage, range 1
-    strong attack-med cost, low damage unless behind target, range 1
+//    standard attack-low cost, low damage, range 1
+//    strong attack-med cost, low damage unless behind target, range 1
     special ability-med cost, no damage, range 3, steals the ap of target entity and gives to ally?
 
 Combat
 ======
-Attack of ability - defense
+//Attack of ability - defense
 
 Terrain
 =======
-~//passable/impassable
+//passable/impassable
 ~faster/slower AP gain
 ~damage boost/reduction
 
 
 
 
-P-reactions
+//P-reactions
 =========
-Take a turn when you get targeted by someone else
+//Take a turn when you get targeted by someone else
 Player is prompted if they want to p-react
-During p-reaction turn AP costs are doubled, or alternatively have an initial reaction cost
-Your AP starts at your current amount when you p-react, not your [AP needed for turn] value
-After your p-reaction, your opponent's action completes
-	-If possible: make attacks track if the target remains in attack range
+//During p-reaction turn AP costs are doubled, or alternatively have an initial reaction cost
+//Your AP starts at your current amount when you p-react, not your [AP needed for turn] value
+//After your p-reaction, your opponent's action completes
+//	-If possible: make attacks track if the target remains in attack range
 
 Possible Class Based P-reactions
 ===========================

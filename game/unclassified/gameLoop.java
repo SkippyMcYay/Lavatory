@@ -91,7 +91,6 @@ public class gameLoop {
                 this.window.setHighlightRange(this.Board.getRangeMap());
                 this.state = gameState.SELECT_SPACE;
                 this.actn = action.MOVE;
-//                this.window.update(this.Board);
             } else if (button == "weak attack" && (hasEnoughAp = ap >= options.weak_attack_AP_cost * preactMod)){
                 this.window.setHighlightRange(this.Board.getDirectRange(curActor,curActor.getStat(ATTACK_RANGE)));
                 this.state = gameState.SELECT_SPACE;
