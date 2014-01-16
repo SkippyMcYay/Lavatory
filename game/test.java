@@ -9,7 +9,6 @@ public class test{
 
         board world=new board();
         Window window=new Window();
-
         for (int i=0; i<5; i++){
             world.setTerrain(i, 4, 1);
         }

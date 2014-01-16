@@ -13,7 +13,10 @@ import java.awt.Point;
 public class Window extends JFrame {
     private ImageIcon Impassable_Terrain=new ImageIcon(".\\game\\display\\Images\\Impassable_Terrain.PNG");
     private ImageIcon Passable_Terrain=new ImageIcon(".\\game\\display\\Images\\Passable_Terrain.PNG");
-    private ImageIcon Actor=new ImageIcon(".\\game\\display\\Images\\Archer.PNG");
+    private ImageIcon Thief=new ImageIcon(".\\game\\display\\Images\\Thief.PNG");
+    private ImageIcon Archer=new ImageIcon(".\\game\\display\\Images\\Archer.PNG");
+    private ImageIcon Warrior=new ImageIcon(".\\game\\display\\Images\\Warrior.PNG");
+
     private ImageIcon Tile_Highlight=new ImageIcon(".\\game\\display\\Images\\Tile_Template.png");
     private ImageIcon Button_Highlight=new ImageIcon(".\\game\\display\\Images\\Button_Highlight.png");
 
@@ -122,7 +125,16 @@ public class Window extends JFrame {
     }
     private void actorHandler(board world,int coord_x,int coord_y){
         if(world.getCombatantAt(coord_x, coord_y)!=null){
-            //actor parser code goes here
+            ImageIcon Actor=Warrior;
+            if(world.getCombatantAt(coord_x,coord_y).getRole()=="thief"){
+                Actor=Thief;
+            }else if(world.getCombatantAt(coord_x,coord_y).getRole()=="warrior"){
+                Actor=Warrior;
+            }else if(world.getCombatantAt(coord_x,coord_y).getRole()=="archer"){
+                Actor=Archer;
+            }else{
+                System.out.println("that is not a role: Window.actorHandler");
+            }
             addActor(Actor,coord_x,coord_y);
         }
     }
@@ -132,25 +144,25 @@ public class Window extends JFrame {
         tile_highlight.setLocation(-1000,-1000);
     }
     private void buttonHandler(){
-        int magical_button_spacer_number=(window_y/(board_size_x/4));
+        int space_between_buttons=(window_y/(board_size_x/4));
 
-        int spacer=(window_y-magical_button_spacer_number)/buttons.length;
+        int spacer=(window_y-space_between_buttons)/buttons.length;
         for(int i=0;i<buttons.length;i++){
             String name=buttons[i];
-            Component foo=new JLabel(Button_Highlight);
-            foo.setName(name);
-            foo.setSize(foo.getPreferredSize());
-            foo.setLocation(battlefield_offset_x/2-foo.getWidth()/2, spacer * i + (magical_button_spacer_number / 2));
-            foo.addMouseListener(new buttonListener());
+            Component button=new JLabel(Button_Highlight);
+            button.setName(name);
+            button.setSize(button.getPreferredSize());
+            button.setLocation(battlefield_offset_x/2-button.getWidth()/2, spacer * i + (space_between_buttons / 2));
+            button.addMouseListener(new buttonListener());
 
 
 
             Component text=new JLabel(name);
             text.setSize(text.getPreferredSize());
-            text.setLocation(foo.getWidth()/2-text.getWidth()/2+foo.getLocation().x,
-                            foo.getHeight()/2-text.getHeight()/2+foo.getLocation().y);
+            text.setLocation(button.getWidth()/2-text.getWidth()/2+button.getLocation().x,
+                            button.getHeight()/2-text.getHeight()/2+button.getLocation().y);
             add(text);
-            add(foo);
+            add(button);
 
         }
     }

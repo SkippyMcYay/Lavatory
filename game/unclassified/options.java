@@ -15,8 +15,8 @@ public class options {
     public static int sprite_dimension_y=60;
 
 
-    public static int battlefield_offset_x=window_x/2-((sprite_dimension_x*board_size_x)/2);
-    public static int battlefield_offset_y=window_y/2-((sprite_dimension_y*board_size_y)/2);
+    public static int battlefield_offset_x=window_x/2-sprite_dimension_x*board_size_x/2;
+    public static int battlefield_offset_y=window_y/2-sprite_dimension_y*board_size_y/2;
 
-    public static String[] buttons={"click","any","word,","later","look","in","options."};
+    public static String[] buttons={"move","weak attack","strong attack","defend","delay","end turn"};
 }
