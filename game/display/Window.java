@@ -40,6 +40,7 @@ public class Window extends JFrame {
     private Component button_highlight=new JLabel(Button_Highlight);
 
     private gameLoop GameLoop;
+    private board world;
 
     private int[][] highlightRange=new int[board_size_x][board_size_y];
     private Component[][] highlightedSpaces=new Component[board_size_x][board_size_y];
@@ -55,18 +56,13 @@ public class Window extends JFrame {
 
     }
     public void update(board world){
-        int coord_x,coord_y;
-        for(coord_y=0;coord_y<board_size_y;coord_y++){
-            for(coord_x=0;coord_x<board_size_x;coord_x++){
-//                System.out.println("tile");
+        this.world=world;
+        for(int coord_y=0;coord_y<board_size_y;coord_y++){
+            for(int coord_x=0;coord_x<board_size_x;coord_x++){
                 tileHandler(world,coord_x,coord_y);
-//                System.out.println("actor");
                 actorHandler(world,coord_x,coord_y);
-//                System.out.println("range");
                 rangeHighlightHandler(coord_x,coord_y);
-//                System.out.println("high");
                 highlightHandler();
-//                System.out.println("button");
                 buttonHandler();
             }
         }
@@ -85,7 +81,14 @@ public class Window extends JFrame {
         }
     }
     public void clearHighlightRange(){
-
+        for(int coord_y=0;coord_y<board_size_y;coord_y++){
+            for(int coord_x=0;coord_x<board_size_x;coord_x++){
+                if (highlightedSpaces[coord_x][coord_y]!=null){
+                    remove(highlightedSpaces[coord_x][coord_y]);
+                }
+            }
+        }
+        this.highlightedSpaces=new JLabel[board_size_x][board_size_y];
     }
 
     private class tileListener implements MouseListener{
@@ -97,14 +100,15 @@ public class Window extends JFrame {
         public void mouseExited(MouseEvent event){
             tile_highlight.setLocation(-1000,-1000);
         }
-        public void mouseClicked(MouseEvent event){
+        public void mouseClicked(MouseEvent event){}
+        public void mouseReleased(MouseEvent event){
             Point coords=event.getComponent().getLocation();
             coords.x=(coords.x-battlefield_offset_x)/tile_dimension_x;
             coords.y=(coords.y-battlefield_offset_y)/tile_dimension_y;
+            clearHighlightRange();
+            update(world);
             GameLoop.tileParser(coords);
-
         }
-        public void mouseReleased(MouseEvent event){}
         public void mousePressed(MouseEvent event){}
     }
     private class buttonListener implements MouseListener{
@@ -116,11 +120,10 @@ public class Window extends JFrame {
         public void mouseExited(MouseEvent event){
             button_highlight.setLocation(-1000,-1000);
         }
-        public void mouseClicked(MouseEvent event){
-//            System.out.println(event.getComponent().getName());
+        public void mouseClicked(MouseEvent event){}
+        public void mouseReleased(MouseEvent event){
             GameLoop.buttonParser(event.getComponent().getName());
         }
-        public void mouseReleased(MouseEvent event){}
         public void mousePressed(MouseEvent event){}
     }
     private void addComponent(Component component,int coord_x,int coord_y){
@@ -186,7 +189,7 @@ public class Window extends JFrame {
             Component text=new JLabel(name);
             text.setSize(text.getPreferredSize());
             text.setLocation(button.getWidth()/2-text.getWidth()/2+button.getLocation().x,
-                            button.getHeight()/2-text.getHeight()/2+button.getLocation().y);
+                    button.getHeight()/2-text.getHeight()/2+button.getLocation().y);
             add(text);
             add(button);
 
