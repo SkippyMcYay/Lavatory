@@ -54,14 +54,20 @@ public class board {
         return this.terrain_map[x][y];
     }
 
-    public boolean[][] getDirectRange(int x, int y, int rangeValue){
-        boolean[][] range = new boolean[this.board_size_x][this.board_size_y];
+    public int[][] getRangeMap(){
+        return range_map;
+    }
+
+    public int[][] getDirectRange(actor person, int rangeValue){
+        Point p = person.getPos();
+        int[][] range = new int[this.board_size_x][this.board_size_y];
         for (int i=0; i<board_size_x; i++){
             for (int j=0; j<board_size_y; j++){
-                int distance = Math.abs(x-i) + Math.abs(y-j);
-                range[i][j] = ((distance <= rangeValue) && (distance>0));
+                int distance = Math.abs(p.x-i) + Math.abs(p.y-j);
+                range[i][j] = ((distance <= rangeValue) && (distance>0)) ? 1 : -1;
             }
         }
+        range_map = range;
         return range;
     }
 
@@ -81,13 +87,14 @@ public class board {
                 if (combatant_map[i][j]!=null) ap_remaining[i][j] = -1;
             }
         }
+        range_map = ap_remaining;
         return ap_remaining;
     }
 
-    public void displayDirectRange(boolean[][] range){
+    public void displayDirectRange(int[][] range){
         for (int j=0;j<this.board_size_y; j++){
             for(int i=0;i<this.board_size_x;i++){
-                if (range[i][j]){
+                if (range[i][j]!=-1){
                     System.out.print("! ");
                 } else {
                     displaySpace(i,j);
@@ -166,4 +173,5 @@ public class board {
     private Vector<actor> combatants = new Vector<actor>();
     private actor[][] combatant_map=new actor[board_size_x][board_size_y];
     private int[][] terrain_map=new int[board_size_x][board_size_y];
+    private int[][] range_map=new int[board_size_x][board_size_y];
 }

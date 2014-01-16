@@ -12,6 +12,7 @@ public class actor {
     private int faction;
     private int waitTime;
     private Point position;
+    private boolean isDefending;
 
     private int[] stats = new int[stat.total_stats];
 
@@ -33,8 +34,14 @@ public class actor {
     }
 
 
-
     public void displayStats(){
+        String defending = this.getIsDefending() ? "Defending" : "";
+        System.out.println(this.name+"  HP:"+this.getStat(CUR_HP)+"/"+this.getStat(MAX_HP)+
+        "  AP:"+this.getStat(CUR_AP)+"/"+this.getStat(AP_FOR_TURN)+"/"+this.getStat(MAX_AP)+
+        "  "+defending);
+    }
+
+    public void displayAllStats(){
         System.out.println("name  :"+this.name);
         System.out.println("role  :"+this.getRole());
 
@@ -44,6 +51,7 @@ public class actor {
         }
         System.out.print("facton:");System.out.println(this.getFaction());
         System.out.print("positn:");System.out.print(this.getPos().x);System.out.print(",");System.out.println(this.getPos().y);
+        System.out.print("defend:");System.out.println(this.getIsDefending());
         System.out.println();
     }
 
@@ -117,5 +125,11 @@ public class actor {
     public void setPos(Point new_position){
         //possible array linking error in the future
         this.position=new_position;
+    }
+    public boolean getIsDefending() {
+        return this.isDefending;
+    }
+    public void setIsDefending(boolean d){
+        this.isDefending = d;
     }
 } //getters and setters

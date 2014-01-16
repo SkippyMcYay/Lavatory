@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.Point;
+import unclassified.gameLoop;
 
 public class Window extends JFrame {
     private ImageIcon Impassable_Terrain=new ImageIcon(".\\game\\display\\Images\\Impassable_Terrain.PNG");
@@ -38,12 +39,15 @@ public class Window extends JFrame {
     private Component tile_highlight=new JLabel(Tile_Highlight);
     private Component button_highlight=new JLabel(Button_Highlight);
 
+    private gameLoop GameLoop;
+
     private int[][] highlightRange=new int[board_size_x][board_size_y];
     private Component[][] highlightedSpaces=new Component[board_size_x][board_size_y];
 
-    public Window(){
+    public Window(gameLoop g){
         super("Tactical Game");
         //setLayout(new GridLayout(board_size_x,board_size_y));
+        this.GameLoop = g;
         setLayout(null);
         setSize(window_x, window_y);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,15 +58,15 @@ public class Window extends JFrame {
         int coord_x,coord_y;
         for(coord_y=0;coord_y<board_size_y;coord_y++){
             for(coord_x=0;coord_x<board_size_x;coord_x++){
-                System.out.println("tile");
+//                System.out.println("tile");
                 tileHandler(world,coord_x,coord_y);
-                System.out.println("actor");
+//                System.out.println("actor");
                 actorHandler(world,coord_x,coord_y);
-                System.out.println("range");
+//                System.out.println("range");
                 rangeHighlightHandler(coord_x,coord_y);
-                System.out.println("high");
+//                System.out.println("high");
                 highlightHandler();
-                System.out.println("button");
+//                System.out.println("button");
                 buttonHandler();
             }
         }
@@ -97,7 +101,7 @@ public class Window extends JFrame {
             Point coords=event.getComponent().getLocation();
             coords.x=(coords.x-battlefield_offset_x)/tile_dimension_x;
             coords.y=(coords.y-battlefield_offset_y)/tile_dimension_y;
-            System.out.println(coords);
+            GameLoop.tileParser(coords);
 
         }
         public void mouseReleased(MouseEvent event){}
@@ -113,9 +117,8 @@ public class Window extends JFrame {
             button_highlight.setLocation(-1000,-1000);
         }
         public void mouseClicked(MouseEvent event){
-
-            System.out.println(event.getComponent().getName());
-
+//            System.out.println(event.getComponent().getName());
+            GameLoop.buttonParser(event.getComponent().getName());
         }
         public void mouseReleased(MouseEvent event){}
         public void mousePressed(MouseEvent event){}

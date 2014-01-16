@@ -2,13 +2,17 @@
 import entity.*;
 import java.awt.Point;
 import display.Window;
+import unclassified.gameLoop;
 import static unclassified.stat.*;
 
 public class test{
     public static void main(String args[]){
 
         board world=new board();
-        Window window=new Window();
+        gameLoop GameLoop = new gameLoop(world);
+        Window window=new Window(GameLoop);
+        GameLoop.setWindow(window);
+
         for (int i=0; i<5; i++){
             world.setTerrain(i, 4, 1);
         }
@@ -26,23 +30,20 @@ public class test{
 
         Point position3 = new Point(4,2);
         actor dude=new actor("McDuggleton", "warrior", position3);
-        dude.setStat(CUR_AP, 50);
         dude.setFaction(0);
         world.addCharacter(dude);
-        int turnout[][]=world.getMoveRange(world.getCombatantAt(4,2));
+//        int turnout[][]=world.getMoveRange(world.getCombatantAt(4,2));
 
-        world.displayMoveRange(turnout);
+//        world.displayMoveRange(turnout);
 
-        world.displayDirectRange(world.getDirectRange(4, 2, 3));
+//        world.displayDirectRange(world.getDirectRange(4, 2, 3));
 
-        person.displayStats();
-        someone.displayStats();
-        dude.displayStats();
+//        person.displayStats();
+//        someone.displayStats();
+//        dude.displayStats();
 
-        window.setHighlightRange(turnout);
         window.update(world);
-
-
+        GameLoop.execute();
 
     }
 }

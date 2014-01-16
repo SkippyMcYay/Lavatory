@@ -19,4 +19,11 @@ public class options {
     public static int battlefield_offset_y=window_y/2-sprite_dimension_y*board_size_y/2;
 
     public static String[] buttons={"move","weak attack","strong attack","defend","delay","end turn"};
+
+    public static int weak_attack_AP_cost = 40;
+    public static int strong_attack_AP_cost = 60;
+    public static int defend_AP_cost = 50;
+    public static int weak_attack_value = 0;
+    public static int strong_attack_value = 4;
+
 }
