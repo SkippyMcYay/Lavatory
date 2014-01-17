@@ -79,6 +79,7 @@ public class Window extends JFrame {
         Highlight_Layer.setLocation(battlefield_offset_x,battlefield_offset_y);
         add(Button_Layer);
         highlightHandler();
+        tile_highlight.setSize(tile_dimension_x,tile_dimension_y);
         Highlight_Layer.add(tile_highlight);
         add(Highlight_Layer);
         add(Range_Layer);
@@ -88,18 +89,9 @@ public class Window extends JFrame {
     }
     public void update(board world){
         this.world=world;
-        remove(Tile_Layer);
-        remove(Actor_Layer);
-        remove(Range_Layer);
-        remove(Button_Layer);
-        Tile_Layer.removeAll();
-        Actor_Layer.removeAll();
-        Range_Layer.removeAll();
-        Button_Layer.removeAll();
-        repaint();
-
+        clearAllLayers();
         buttonHandler();
-
+        //highlightHandler();
         for(int coord_y=0;coord_y<board_size_y;coord_y++){
             for(int coord_x=0;coord_x<board_size_x;coord_x++){
                 rangeHighlightHandler(coord_x,coord_y);
@@ -109,11 +101,11 @@ public class Window extends JFrame {
 
             }
         }
-        add(Button_Layer);
-        add(Highlight_Layer);
-        add(Range_Layer);
-        add(Actor_Layer);
-        add(Tile_Layer);
+//        add(Button_Layer);
+//        add(Highlight_Layer);
+//        add(Range_Layer);
+//        add(Actor_Layer);
+//        add(Tile_Layer);
         setVisible(true);
     }
     public void setHighlightRange(int[][] spaces){
@@ -144,7 +136,6 @@ public class Window extends JFrame {
             tile_highlight.setLocation(coords.x,coords.y);
         }
         public void mouseExited(MouseEvent event){
-            highlightHandler();
             update(world);
         }
         public void mouseClicked(MouseEvent event){}
@@ -169,7 +160,7 @@ public class Window extends JFrame {
         }
         public void mousePressed(MouseEvent event){}
     }
-    private void addComponent(Component component,int coord_x,int coord_y,JPanel layer){
+    private void addCompo(Component component,int coord_x,int coord_y,JPanel layer){
         int x=coord_x*tile_dimension_x;
         int y=coord_y*tile_dimension_y;
 
@@ -187,7 +178,7 @@ public class Window extends JFrame {
             System.out.println("that terrain type not covered in Window.tileHandler");
         }
         component.addMouseListener(new tileListener());
-        addComponent(component,coord_x,coord_y,Tile_Layer);
+        addCompo(component,coord_x,coord_y,Tile_Layer);
 
     }
     private void actorHandler(int coord_x,int coord_y){
@@ -202,16 +193,33 @@ public class Window extends JFrame {
             }else{
                 System.out.println("that is not a role: Window.actorHandler");
             }
-            addComponent(Actor,coord_x,coord_y,Actor_Layer);
+            addCompo(Actor,coord_x,coord_y,Actor_Layer);
         }
     }
+    private void clearAllLayers(){
+
+//        remove(Tile_Layer);
+//        remove(Actor_Layer);
+//        remove(Range_Layer);
+//        remove(Button_Layer);
+        Tile_Layer.removeAll();
+        Actor_Layer.removeAll();
+        Range_Layer.removeAll();
+        Button_Layer.removeAll();
+        Tile_Layer.repaint();
+        Actor_Layer.repaint();
+        Range_Layer.repaint();
+        Button_Layer.repaint();
+        Highlight_Layer.repaint();
+        repaint();
+    }
     private void highlightHandler(){
-        tile_highlight.setSize(tile_dimension_x,tile_dimension_y);
+        //tile_highlight.setSize(tile_dimension_x,tile_dimension_y);
         tile_highlight.setLocation(-1000,-1000);
     }
     private void rangeHighlightHandler(int coord_x,int coord_y){
         if(highlightedSpaces[coord_x][coord_y]!=null){
-            addComponent(highlightedSpaces[coord_x][coord_y],coord_x,coord_y,Range_Layer);
+            addCompo(highlightedSpaces[coord_x][coord_y],coord_x,coord_y,Range_Layer);
         }
     }
     private void buttonHandler(){
