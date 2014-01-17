@@ -91,7 +91,7 @@ public class Window extends JFrame {
         this.world=world;
         clearAllLayers();
         buttonHandler();
-        //highlightHandler();
+        highlightHandler();
         for(int coord_y=0;coord_y<board_size_y;coord_y++){
             for(int coord_x=0;coord_x<board_size_x;coord_x++){
                 rangeHighlightHandler(coord_x,coord_y);
@@ -134,6 +134,7 @@ public class Window extends JFrame {
         public void mouseEntered(MouseEvent event){
             Point coords=event.getComponent().getLocation();
             tile_highlight.setLocation(coords.x,coords.y);
+
         }
         public void mouseExited(MouseEvent event){
             update(world);
